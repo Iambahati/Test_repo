@@ -60,7 +60,6 @@ mental-health-platform/
 ├── docker/		  # Deployment infra
 ├── manage.py             # Django management script
 ├── requirements.txt      # Project dependencies
-├── requirements-dev.txt  # Development dependencies
 └── README.md  
 ```
 
