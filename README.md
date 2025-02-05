@@ -1,268 +1,144 @@
 # AI-Powered Mental Health Platform
 
-## Overview
-A comprehensive mental health support platform leveraging AI for personalized care, crisis detection, and therapeutic assistance. Built with Django Ninja, React, and state-of-the-art ML models, ensuring HIPAA compliance and robust security.
+A secure, HIPAA-compliant mental health support platform leveraging AI for personalized care, crisis detection, and therapeutic assistance. Built with Django, React, and advanced ML models.
 
 ## 🌟 Key Features
 
-### User Interface
-- Real-time AI chatbot support
-- Personalized assessment tools
-- Progress tracking dashboard
-- Emergency response system
-- Therapist matching interface
+- **AI-Powered Chat Support**: Real-time therapeutic conversations with crisis detection
+- **Personalized Care**: Customized assessment tools and progress tracking
+- **Professional Integration**: Seamless therapist matching and oversight
+- **Security First**: HIPAA-compliant with end-to-end encryption
+- **Emergency Response**: Automated crisis detection with immediate professional intervention
 
-### AI & ML Capabilities
-- **Crisis Detection:** Real-time monitoring using custom ML models
-- **Sentiment Analysis:** Emotion detection using HuggingFace transformers
-- **Risk Assessment:** ML-powered risk evaluation and triage
-- **NLP Engine:** Rasa-powered intent and entity extraction
-
-### Security & Compliance
-- HIPAA-compliant data handling
-- End-to-end encryption
-- Secure authentication system
-- Audit logging
-- Data anonymization
-
-## 🏗 Architecture
-
-### Backend Services
-```
-backend/
-├── api/                  # Django Ninja API endpoints
-├── ml_models/           # ML model implementations
-│   ├── crisis_detection/
-│   ├── risk_assessment/
-│   ├── sentiment_analysis/
-│   └── rasa_bot/
-├── core/                # Django core settings
-├── utils/               # Utility functions
-└── tests/               # Test suites
-```
-
-### Frontend Structure
-```
-frontend/
-├── src/
-│   ├── components/      # Reusable UI components
-│   ├── pages/          # Main application pages
-│   ├── services/       # API integration
-│   └── utils/          # Helper functions
-├── public/
-└── tests/
-```
-
-### MVP Development
-```
-mvp-colab/
-├── models/             # Jupyter notebooks for model development
-├── notebooks/         # Analysis and evaluation notebooks
-└── data/             # Training and test datasets
-```
-
-## 🚀 Getting Started
+## 🚀 Quick Start
 
 ### Prerequisites
-```bash
-# Python 3.8+
-python --version
 
-# Node.js 16+
-node --version
+- Python 3.8+
+- Node.js 16+
+- Docker & Docker-compose
+- PostgreSQL 13+
 
-# Docker & Docker Compose
-docker --version
-docker-compose --version
-```
+### Development Setup
 
-### Installation
-
-1. **Clone the Repository**
+1. **Clone and Configure**
 ```bash
 git clone https://github.com/hakkenlab/mental-health-platform.git
 cd mental-health-platform
+cp .env.example .env    # Configure your environment variables
 ```
 
-2. **Backend Setup**
+2. **Using Make Commands**
 ```bash
-# Create and activate virtual environment
-python -m venv venv
-source venv/bin/activate  # or `venv\Scripts\activate` on Windows
+# Local development
+make install           # Install dependencies
+make migrate          # Run database migrations
+make run              # Start development server
 
-# Install dependencies
-cd backend
-pip install -r requirements.txt
-
-# Set up environment variables
-cp .env.example .env
-# Edit .env with your configurations
-
-# Run migrations
-python manage.py migrate
-
-# Start the development server
-python manage.py runserver
+# Production deployment
+make ENV=prod install
+make ENV=prod docker-build
+make ENV=prod docker-up
 ```
 
-3. **Frontend Setup**
-```bash
-cd frontend
+3. **Access the Application**
+- Backend API: http://localhost:8000
+- Frontend: http://localhost:3000
+- Admin Interface: http://localhost:8000/admin
 
-# Install dependencies
-npm install
+## 🏗 Project Structure
 
-# Start development server
-npm start
+```
+mental-health-platform/
+├── src/                  # Django backend
+│   ├── core/             # Project configuration
+│   ├── apps/             # Django applications
+│   │   ├── chat/        # AI chat functionality
+│   │   ├── accounts/    # User management
+│   │   └── others/      # Additional modules
+│   └── templates/        # HTML templates
+├── data/                 # ML models and datasets
+├── requirements/         # Python dependencies
+└── docker/              # Docker configuration
 ```
 
-4. **Docker Deployment**
-```bash
-# Build and run all services
-docker-compose up --build
+## 🔧 Development
 
-# Run specific services
-docker-compose up backend frontend
-```
+### Environment Configuration
 
-### Environment Variables
+Required environment variables:
 ```env
-# Backend
-DJANGO_SECRET_KEY=your-secret-key
-DEBUG=True
-ALLOWED_HOSTS=localhost,127.0.0.1
+DJANGO_SETTINGS_MODULE=core.settings.[local|prod]
+SECRET_KEY=your-secret-key
 DATABASE_URL=postgresql://user:password@localhost:5432/dbname
-
-# ML Services
-RASA_MODEL_PATH=/app/models
-HUGGINGFACE_API_KEY=your-key
-
-# External Services
-TWILIO_ACCOUNT_SID=your-sid
-TWILIO_AUTH_TOKEN=your-token
+HUGGINGFACE_API_KEY=your-api-key
 ```
 
-## 🧪 Testing
+### Running Tests
 
-### Backend Tests
 ```bash
-cd backend
-pytest tests/
+make test               # Run all tests
+make test-coverage     # Run tests with coverage report
 ```
 
-### Frontend Tests
+### Code Quality
+
 ```bash
-cd frontend
-npm test
+make lint              # Run linters
+make format           # Format code
 ```
 
-### ML Model Testing
+## 🚀 Deployment
+
+### Using Docker (Recommended)
+
 ```bash
-cd backend/ml_models
-pytest tests/
+# Production deployment
+make ENV=prod docker-build
+make ENV=prod docker-up
+
+# Monitor logs
+docker-compose -f docker-compose.prod.yml logs -f
 ```
 
-## 📚 API Documentation
+### Manual Deployment
 
-### Chat Endpoints
-```python
-POST /api/chat
-{
-    "text": "string",
-    "user_id": "string",
-    "session_id": "string"
-}
-```
+1. Configure production settings
+2. Install production dependencies
+3. Collect static files
+4. Run migrations
+5. Configure web server (Nginx/Apache)
 
-### Assessment Endpoints
-```python
-POST /api/assess
-{
-    "user_id": "string",
-    "responses": "dict",
-    "current_mood": "string"
-}
-```
-
-## 🛠 Development Guidelines
-
-### Code Style
-- Backend: PEP 8
-- Frontend: ESLint + Prettier
-- Documentation: Google Style Python Docstrings
-
-### Branch Strategy
-- `main`: Production-ready code
-- `develop`: Development branch
-- `feature/*`: New features
-- `hotfix/*`: Emergency fixes
-
-### Commit Messages
-```
-feat: Add new feature
-fix: Bug fix
-docs: Documentation changes
-style: Code style changes
-refactor: Code refactoring
-test: Test updates
-```
-
-## 📈 Monitoring & Maintenance
-
-### Health Checks
-- Backend service status
-- ML model performance metrics
-- API response times
-- Error rates
-
-### Backup Procedures
 ```bash
-# Database backup
-./scripts/backup_db.sh
-
-# Model artifacts backup
-./scripts/backup_models.sh
+make ENV=prod install
+make ENV=prod collectstatic
+make ENV=prod migrate
 ```
 
-## 🔐 Security Considerations
+## 🔒 Security Features
 
-### Data Protection
-- All PHI (Protected Health Information) is encrypted at rest and in transit
-- Regular security audits
-- Access control and authentication
-- Data retention policies
-
-### Crisis Protocol
-1. Automatic detection of crisis situations
-2. Immediate notification to crisis team
-3. Integration with emergency services
-4. Audit trail of all crisis-related actions
-
-## 📦 Dependencies
-
-### Backend
-- Django==4.2.0
-- django-ninja==0.22.0
-- rasa==3.5.0
-- transformers==4.28.0
-- torch==2.0.0
-- scikit-learn==1.2.2
-- twilio==8.1.0
-
-### Frontend
-- react==18.2.0
-- @material-ui/core==4.12.4
-- axios==1.3.4
-- socket.io-client==4.6.1
+- End-to-end encryption for all communications
+- Comprehensive access logging
+- Automated threat detection
 
 ## 🤝 Contributing
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
 
-## 📄 License
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
+## 📝 License
+
+This project is licensed under the MIT License - see [LICENSE.md](LICENSE.md) for details.
+
+## 📫 Support
+
+For support and queries:
+- Create a GitHub issue
 
 ## 🙏 Acknowledgments
-- HuggingFace team for transformer models
-- Rasa for the conversational AI framework
-- Twilio for communication services
+
+- HuggingFace for transformer models
+- Django community for the robust framework
