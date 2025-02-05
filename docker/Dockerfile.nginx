@@ -1,0 +1,13 @@
+FROM nginx:1.21-alpine
+
+RUN rm /etc/nginx/conf.d/default.conf
+COPY nginx/conf.d/default.conf /etc/nginx/conf.d/
+
+# Create directories for static and media files
+RUN mkdir -p /app/static /app/media
+
+# Add non-root user
+RUN adduser -D nginx
+RUN chown -R nginx:nginx /app
+
+USER nginx

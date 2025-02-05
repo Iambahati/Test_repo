@@ -1,0 +1,38 @@
+# Build Stage: Install dependencies
+FROM python:3.9-slim as builder
+
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+WORKDIR /app
+
+# Copy requirements file
+COPY ../docker/requirements.txt .
+
+# Install dependencies and create wheels
+RUN pip wheel --no-cache-dir --no-deps --wheel-dir /app/wheels -r requirements.txt
+
+# Final Stage: Set up application container
+FROM python:3.9-slim
+
+WORKDIR /app
+
+# Copy wheels and requirements from the builder stage
+COPY --from=builder /app/wheels /wheels
+COPY --from=builder /app/requirements.txt .
+
+# Install dependencies from wheels
+RUN pip install --no-cache /wheels/*
+
+# Copy the application code
+COPY . .
+
+# Run collectstatic to gather static files
+RUN python src/manage.py collectstatic --noinput
+
+# Expose the port (default is 8000 for gunicorn)
+EXPOSE 8000
+
+# Run the app with gunicorn
+CMD ["gunicorn", "core.wsgi:application", "--bind", "0.0.0.0:8000"]
