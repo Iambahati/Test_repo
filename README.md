@@ -15,7 +15,6 @@ A secure, HIPAA-compliant mental health support platform leveraging AI for perso
 ### Prerequisites
 
 - Python 3.8+
-- Node.js 16+
 - Docker & Docker-compose
 - PostgreSQL 13+
 
@@ -25,12 +24,12 @@ A secure, HIPAA-compliant mental health support platform leveraging AI for perso
 ```bash
 git clone https://github.com/hakkenlab/mental-health-platform.git
 cd mental-health-platform
-cp .env.example .env    # Configure your environment variables
 ```
 
 2. **Using Make Commands**
 ```bash
 # Local development
+make env-setup		# Setup .env file with secret key
 make install           # Install dependencies
 make migrate          # Run database migrations
 make run              # Start development server
@@ -57,21 +56,12 @@ mental-health-platform/
 │   │   ├── accounts/    # User management
 │   │   └── others/      # Additional modules
 │   └── templates/        # HTML templates
-├── data/                 # ML models and datasets
-├── requirements/         # Python dependencies
-└── docker/              # Docker configuration
-```
-
-## 🔧 Development
-
-### Environment Configuration
-
-Required environment variables:
-```env
-DJANGO_SETTINGS_MODULE=core.settings.[local|prod]
-SECRET_KEY=your-secret-key
-DATABASE_URL=postgresql://user:password@localhost:5432/dbname
-HUGGINGFACE_API_KEY=your-api-key
+├── data/                 # Jupyter notebooks and ML development
+├── docker/		  # Deployment infra
+├── manage.py             # Django management script
+├── requirements.txt      # Project dependencies
+├── requirements-dev.txt  # Development dependencies
+└── README.md  
 ```
 
 ### Running Tests
