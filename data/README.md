@@ -1,7 +1,3 @@
-Here's a neatly formatted and well-organized README for your dataset, with the appropriate links:
-
----
-
 # About Dataset
 
 This comprehensive dataset is a meticulously curated collection of mental health statuses tagged from various statements. The dataset amalgamates raw data from multiple sources, cleaned and compiled to create a robust resource for developing chatbots and performing sentiment analysis.
@@ -57,6 +53,3 @@ This dataset is ideal for training machine learning models aimed at understandin
 ## Acknowledgments
 
 This dataset was created by aggregating and cleaning data from various publicly available datasets on Kaggle. Special thanks to the original dataset creators for their contributions.
-
-
----
