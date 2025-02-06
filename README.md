@@ -29,10 +29,12 @@ cd mental-health-platform
 2. **Using Make Commands**
 ```bash
 # Local development
+
 make env-setup		# Setup .env file with secret key
-make install           # Install dependencies
-make migrate          # Run database migrations
-make run              # Start development server
+make init           # Init db
+make install        # Install dependencies
+make migrate        # Run database migrations
+make serve            # Start development server
 
 # Production deployment
 make ENV=prod install

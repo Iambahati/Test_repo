@@ -22,6 +22,7 @@ endif
 
 help:
 	@echo "Available commands:"
+	@echo "  make init               Initialize project"
 	@echo "  make env-setup          Create environment configuration"
 	@echo "  make install            Install dependencies"
 	@echo "  make run                Run Django development server"
@@ -38,6 +39,11 @@ help:
 	@echo "Environment selection:"
 	@echo "  make ENV=prod <command>  Run command in production environment"
 	@echo "  make ENV=local <command> Run command in local environment (default)"
+
+init:
+	mkdir -p src/db
+	touch src/db/.gitkeep
+	DJANGO_SETTINGS_MODULE=$(DJANGO_SETTINGS) $(MANAGE) migrate
 
 # Environment setup
 env-setup:
@@ -65,6 +71,8 @@ env-setup:
 				cp .env.example .env && \
 				sed -i.bak "s|SECRET_KEY=.*|SECRET_KEY=$(shell openssl rand -base64 32 | tr -d '=' | tr -d '\n')|g" .env && \
 				rm .env.bak; \
+				chmod +x scripts/export_env.sh; \
+				. scripts/export_env.sh; \
 			else \
 				echo "Error: .env.example not found"; \
 				exit 1; \
@@ -78,24 +86,24 @@ install:
 	$(PIP) install -r requirements.txt
 
 run:
-	DJANGO_SETTINGS_MODULE=$(DJANGO_SETTINGS) $(MANAGE) runserver 0.0.0.0:8000
+	$(MANAGE) runserver 0.0.0.0:8000
 
 migrate:
-	DJANGO_SETTINGS_MODULE=$(DJANGO_SETTINGS) $(MANAGE) migrate
+	$(MANAGE) migrate
 
 migrations:
-	DJANGO_SETTINGS_MODULE=$(DJANGO_SETTINGS) $(MANAGE) makemigrations
+	$(MANAGE) makemigrations
 
 shell:
-	DJANGO_SETTINGS_MODULE=$(DJANGO_SETTINGS) $(MANAGE) shell
+	$(MANAGE) shell
 
 test:
-	DJANGO_SETTINGS_MODULE=$(DJANGO_SETTINGS) $(MANAGE) test
+	$(MANAGE) test
 
 clean:
 	find . -type f -name "*.pyc" -delete
 	find . -type d -name "__pycache__" -delete
-	find . -type f -name "*.sqlite3" -delete
+	# find . -type f -name "*.sqlite3" -delete
 
 docker-build:
 	$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) build
@@ -107,28 +115,42 @@ docker-down:
 	$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) down
 
 create-app:
-ifndef APP_NAME
-	@echo "Error: APP_NAME is required. Usage: make create-app APP_NAME=your_app_name"
-	@exit 1
-endif
-	@echo "Creating Django app: $(APP_NAME)"
-	# Create the app directory and run the Django startapp command
-	cd src/apps && mkdir -p $(APP_NAME) && $(MANAGE) startapp $(APP_NAME) $(APP_NAME)
-	@echo "Updating INSTALLED_APPS in base settings..."
-	# Check if INSTALLED_APPS exists and append the new app
-	@if grep -q "INSTALLED_APPS = \[" src/core/settings/base.py; then \
-		sed -i.bak '/INSTALLED_APPS = \[/a \    '\''apps.$(APP_NAME)'\''\,' src/core/settings/base.py && \
-		rm src/core/settings/base.py.bak; \
-	else \
-		$(error Error: INSTALLED_APPS list not found in base.py) \
+	@if [ -z "$(filter-out $@,$(MAKECMDGOALS))" ]; then \
+		echo "Error: App name(s) required. Usage: make create-app app1 [app2 ...]"; \
+		exit 1; \
 	fi
-	@echo "Created app $(APP_NAME) in src/apps/$(APP_NAME) and updated settings"
+	@if [ ! -f "src/core/settings/base.py" ]; then \
+		echo "Error: src/core/settings/base.py not found"; \
+		exit 1; \
+	fi
+	@for app in $(filter-out $@,$(MAKECMDGOALS)); do \
+		echo "Creating Django app: $$app"; \
+		if [ ! -d "src/apps/$$app" ]; then \
+			mkdir -p src/apps/$$app; \
+		fi; \
+		django-admin startapp $$app src/apps/$$app; \
+		touch src/apps/$$app/apps.py; \
+		capitalized_app=$$(echo "$$app" | sed 's/.*/\u&/'); \
+		echo "from django.apps import AppConfig\n\nclass $${capitalized_app}Config(AppConfig):\n    name = 'apps.$$app'" > src/apps/$$app/apps.py; \
+		echo "Updating INSTALLED_APPS in settings..."; \
+		if ! grep -q "'apps.$$app'" src/core/settings/base.py; then \
+			sed -i '/INSTALLED_APPS = \[/,/]/ s/]/    "apps.'"$$app"'",\n]/' src/core/settings/base.py; \
+			echo "✓ Created app $$app and updated INSTALLED_APPS"; \
+		else \
+			 echo "App $$app already registered"; \
+		fi; \
+	done
+
+%:
+	@:
 
 createsuperuser:
-	DJANGO_SETTINGS_MODULE=$(DJANGO_SETTINGS) $(MANAGE) createsuperuser
+	$(MANAGE) createsuperuser
 
 collectstatic:
-	DJANGO_SETTINGS_MODULE=$(DJANGO_SETTINGS) $(MANAGE) collectstatic --noinput
+	$(MANAGE) collectstatic --noinput
 
 dbshell:
-	DJANGO_SETTINGS_MODULE=$(DJANGO_SETTINGS) $(MANAGE) dbshell
+	$(MANAGE) dbshell
+
+

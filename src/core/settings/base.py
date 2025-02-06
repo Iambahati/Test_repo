@@ -1,9 +1,12 @@
+import os
 from pathlib import Path
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent
 
 # Quick-start development settings 
-SECRET_KEY = 'oh#d30g8g8ybi06#*&qa$7(7m5opmvq-mzr0qspyphlqpesh2n'
+SECRET_KEY = os.environ.get('SECRET_KEY')
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -12,6 +15,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # "apps.users",
 ]
 
 MIDDLEWARE = [
@@ -42,14 +46,14 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'core.wsgi.application'
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME':  BASE_DIR / 'src' / 'db' / 'db.sqlite3',
     }
 }
+
+WSGI_APPLICATION = 'core.wsgi.application'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -65,6 +69,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+AUTH_USER_MODEL = 'users.CustomUser'
 
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
