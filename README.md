@@ -30,11 +30,12 @@ cd mental-health-platform
 ```bash
 # Local development
 
-make env-setup      # Setup .env file with secret key
-make init           # Init db
-make install        # Install dependencies
-make migratee       # Run database migrations
-make run            # Start development server
+make env-setup          # Setup .env file with secret key
+make init               # Init db
+make install            # Install project dependencies
+make migrations         # Run database migrations
+make migrate            # Run database migrations
+make run                # Start development server
 
 # Production deployment
 make ENV=prod install
@@ -51,17 +52,18 @@ make ENV=prod docker-up
 
 ```
 mental-health-platform/
-├── src/                  # Django backend
-│   ├── core/             # Project configuration
-│   ├── apps/             # Django applications
-│   │   ├── chat/        # AI chat functionality
-│   │   ├── accounts/    # User management
-│   │   └── others/      # Additional modules
-│   └── templates/        # HTML templates
-├── data/                 # Jupyter notebooks and ML development
-├── docker/		  # Deployment infra
-├── manage.py             # Django management script
-├── requirements.txt      # Project dependencies
+├── src/                    # Django backend
+│   ├── core/               # Project configuration
+│   ├── apps/               # Django applications
+│   │   ├── chat/           # AI chat functionality
+│   │   ├── users/          # User management
+│   │   ├── db/             # User management
+│   │   └── others/         # Additional modules
+│   └── templates/          # HTML templates
+├── data/                   # Jupyter notebooks and ML development
+├── docker/                 # Deployment infra
+├── manage.py               # Django management script
+├── requirements.txt        # Project packages
 └── README.md  
 ```
 
@@ -98,7 +100,7 @@ docker-compose -f docker-compose.prod.yml logs -f
 2. Install production dependencies
 3. Collect static files
 4. Run migrations
-5. Configure web server (Nginx/Apache)
+5. Configure web server (Nginx/Apache/Gunicorn)
 
 ```bash
 make ENV=prod install
