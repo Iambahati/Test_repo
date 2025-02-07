@@ -30,11 +30,11 @@ cd mental-health-platform
 ```bash
 # Local development
 
-make env-setup		# Setup .env file with secret key
+make env-setup      # Setup .env file with secret key
 make init           # Init db
 make install        # Install dependencies
-make migrate        # Run database migrations
-make serve            # Start development server
+make migratee       # Run database migrations
+make run            # Start development server
 
 # Production deployment
 make ENV=prod install

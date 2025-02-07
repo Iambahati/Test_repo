@@ -42,7 +42,6 @@ help:
 
 init:
 	mkdir -p src/db
-	touch src/db/.gitkeep
 	DJANGO_SETTINGS_MODULE=$(DJANGO_SETTINGS) $(MANAGE) migrate
 
 # Environment setup
@@ -61,7 +60,7 @@ env-setup:
 			echo "DB_PASSWORD=$(shell openssl rand -base64 12)" >> .env.prod; \
 			echo "DB_HOST=db" >> .env.prod; \
 			echo "DB_PORT=5432" >> .env.prod; \
-			echo "Created .env.prod with default production settings"; \
+			echo "Created .env.prod and DJANGO_SETTINGS_MODULE set to core.settings.prod"; \
 		else \
 			echo ".env.prod already exists."; \
 		fi; \
@@ -69,10 +68,11 @@ env-setup:
 		if [ ! -f .env ]; then \
 			if [ -f .env.example ]; then \
 				cp .env.example .env && \
+				sed -i.bak "s|DJANGO_SETTINGS_MODULE=.*|DJANGO_SETTINGS_MODULE=core.settings.local|g" .env && \
+				sed -i.bak "s|DEBUG=.*|DEBUG=True|g" .env && \
 				sed -i.bak "s|SECRET_KEY=.*|SECRET_KEY=$(shell openssl rand -base64 32 | tr -d '=' | tr -d '\n')|g" .env && \
 				rm .env.bak; \
-				chmod +x scripts/export_env.sh; \
-				. scripts/export_env.sh; \
+				echo "Created .env and DJANGO_SETTINGS_MODULE set to core.settings.local"; \
 			else \
 				echo "Error: .env.example not found"; \
 				exit 1; \
