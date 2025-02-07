@@ -42,7 +42,7 @@ help:
 
 init:
 	mkdir -p src/db
-	DJANGO_SETTINGS_MODULE=$(DJANGO_SETTINGS) $(MANAGE) migrate
+	DJANGO_SETTINGS_MODULE=$(DJANGO_SETTINGS) $(MANAGE) makemigrations
 
 # Environment setup
 env-setup:
