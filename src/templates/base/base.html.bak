@@ -9,7 +9,7 @@
 	<title>NuraCare – Mental Health 
 	</title>
 
-	<link rel="stylesheet" id="hfe-widgets-style-css" href="{% static 'css/frontend.css' %}" media="all">
+	<link rel="stylesheet" id="hfe-widgets-style-css" href="assets/css/frontend.css" media="all">
 	<style id="wp-emoji-styles-inline-css">
 		img.wp-smiley,
 		img.emoji {
@@ -451,94 +451,90 @@
 			line-height: 1.6;
 		}
 	</style>
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Geologica:wght@100..900&display=swap" rel="stylesheet">
-	<link rel="stylesheet" id="template-kit-export-css" href="{% static 'css/template-kit-export-public.css' %}" media="all">
-	<link rel="stylesheet" id="rkit-offcanvas-style-css" href="{% static 'css/offcanvas.css' %}" media="all">
-	<link rel="stylesheet" id="rkit-navmenu-style-css" href="{% static 'css/navmenu.css' %}" media="all">
-	<link rel="stylesheet" id="rkit-headerinfo-style-css" href="{% static 'css/headerinfo.css' %}" media="all">
-	<link rel="stylesheet" id="navmenu-rkit-style-css" href="{% static 'css/rkit-navmenu.css' %}" media="all">
-	<link rel="stylesheet" id="rkit-search-style-css" href="{% static 'css/search.css' %}" media="all">
-	<link rel="stylesheet" id="rkit-sitelogo-style-css" href="{% static 'css/site_logo.css' %}" media="all">
-	<link rel="stylesheet" id="rkit-post-grid-style-css" href="{% static 'css/rkit-blog-post.css' %}" media="all">
-	<link rel="stylesheet" id="rkit-post-block-style-css" href="{% static 'css/rkit-post-block.css' %}" media="all">
-	<link rel="stylesheet" id="rkit-cta-style-css" href="{% static 'css/cta.css' %}" media="all">
-	<link rel="stylesheet" id="rkit-blockquote-css" href="{% static 'css/blockquote.css' %}" media="all">
-	<link rel="stylesheet" id="rkit-social-share-css" href="{% static 'css/social_share.css' %}" media="all">
-	<link rel="stylesheet" id="rkit-team-style-css" href="{% static 'css/rkit_team.css' %}" media="all">
-	<link rel="stylesheet" id="rkit-running_text-style-css" href="{% static 'css/running_text.css' %}" media="all">
-	<link rel="stylesheet" id="rkit-animated_heading-style-css" href="{% static 'css/animated_heading.css' %}" media="all">
-	<link rel="stylesheet" id="rkit-card_slider-style-css" href="{% static 'css/card_slider.css' %}" media="all">
-	<link rel="stylesheet" id="rkit-accordion-style-css" href="{% static 'css/accordion.css' %}" media="all">
-	<link rel="stylesheet" id="rkit-testimonial_carousel-style-css" href="{% static 'css/testimonial_carousel.css' %}" media="all">
-	<link rel="stylesheet" id="rkit-swiper-css" href="{% static 'css/swiper-bundle.min.css' %}" media="all">
-	<link rel="stylesheet" id="rkit-tabs-style-css" href="{% static 'css/tabs.css' %}" media="all">
-	<link rel="stylesheet" id="rkit-progress-style-css" href="{% static 'css/progress-bar.css' %}" media="all">
-	<link rel="stylesheet" id="counter-style-css" href="{% static 'css/counter.css' %}" media="all">
-	<link rel="stylesheet" id="countdown-style-css" href="{% static 'css/countdown.css' %}" media="all">
-	<link rel="stylesheet" id="rkit-pricelist-style-css" href="{% static 'css/pricelist.css' %}" media="all">
-	<link rel="stylesheet" id="advanced_heading-style-css" href="{% static 'css/advanced_heading.css' %}" media="all">
-	<link rel="stylesheet" id="image_comparison-style-css" href="{% static 'css/image_comparison.css' %}" media="all">
-	<link rel="stylesheet" id="rkit-client_carousel-style-css" href="{% static 'css/client_carousel.css' %}" media="all">
-	<link rel="stylesheet" id="postlist-style-css" href="{% static 'css/postlist.css' %}" media="all">
-	<link rel="stylesheet" id="pricebox-style-css" href="{% static 'css/pricingbox.css' %}" media="all">
-	<link rel="stylesheet" id="rkit-image_box-style-css" href="{% static 'css/image_box.css' %}" media="all">
-	<link rel="stylesheet" id="rkit-image_accordion-style-css" href="{% static 'css/image_accordion.css' %}" media="all">
-	<link rel="stylesheet" id="rkit-dual_button-style-css" href="{% static 'css/dual_button.css' %}" media="all">
-	<link rel="stylesheet" id="price_list-style-css" href="{% static 'css/price_list.css' %}" media="all">
-	<link rel="stylesheet" id="rkit-image_gallery-style-css" href="{% static 'css/image_gallery.css' %}" media="all">
-	<link rel="stylesheet" id="rkit-home-slider-style-css" href="{% static 'css/home_slider.css' %}" media="all">
-	<link rel="stylesheet" id="rkit-woo_product_grid-style-css" href="{% static 'css/woo_product_grid.css' %}" media="all">
-	<link rel="stylesheet" id="elementor-icons-rtmicon-css" href="{% static 'css/rtmicons.css' %}" media="all">
-	<link rel="stylesheet" id="rkit-widget-style-css" href="{% static 'css/rkit.css' %}" media="all">
-	<link rel="stylesheet" id="hfe-style-css" href="{% static 'css/header-footer-elementor.css' %}" media="all">
-	<link rel="stylesheet" id="elementor-frontend-css" href="{% static 'css/frontend.min.css' %}" media="all">
-	<link rel="stylesheet" id="elementor-post-6-css" href="{% static 'css/post-6.css' %}" media="all">
-	<link rel="stylesheet" id="e-animation-fadeInUp-css" href="{% static 'css/fadeInUp.min.css' %}" media="all">
-	<link rel="stylesheet" id="widget-text-editor-css" href="{% static 'css/widget-text-editor.min.css' %}" media="all">
-	<link rel="stylesheet" id="e-animation-bounceInUp-css" href="{% static 'css/bounceInUp.min.css' %}" media="all">
-	<link rel="stylesheet" id="e-animation-fadeIn-css" href="{% static 'css/fadeIn.min.css' %}" media="all">
-	<link rel="stylesheet" id="widget-image-css" href="{% static 'css/widget-image.min.css' %}" media="all">
-	<link rel="stylesheet" id="widget-image-box-css" href="{% static 'css/widget-image-box.min.css' %}" media="all">
-	<link rel="stylesheet" id="swiper-css" href="{% static 'css/swiper.min.css' %}" media="all">
-	<link rel="stylesheet" id="mediaelement-css" href="{% static 'css/mediaelementplayer-legacy.min.css' %}" media="all">
-	<link rel="stylesheet" id="wp-mediaelement-css" href="{% static 'css/wp-mediaelement.min.css' %}" media="all">
-	<link rel="stylesheet" id="elementor-post-11-css" href="{% static 'css/post-11.css' %}" media="all">
-	<link rel="stylesheet" id="elementor-post-101-css" href="{% static 'css/post-101.css' %}" media="all">
-	<link rel="stylesheet" id="elementor-post-151-css" href="{% static 'css/post-151.css' %}" media="all">
-	<link rel="stylesheet" id="cute-alert-css" href="{% static 'css/style.css' %}" media="all">
-	<link rel="stylesheet" id="text-editor-style-css" href="{% static 'css/text-editor.css' %}" media="all">
-	<link rel="stylesheet" id="hello-elementor-css" href="{% static 'css/style.min.css' %}" media="all">
-	<link rel="stylesheet" id="hello-elementor-theme-style-css" href="{% static 'css/theme.min.css' %}" media="all">
-	<link rel="stylesheet" id="hfe-elementor-icons-css" href="{% static 'css/elementor-icons.min.css' %}" media="all">
-	<link rel="stylesheet" id="hfe-icons-list-css" href="{% static 'css/widget-icon-list.min.css' %}" media="all">
-	<link rel="stylesheet" id="hfe-social-icons-css" href="{% static 'css/widget-social-icons.min.css' %}" media="all">
-	<link rel="stylesheet" id="hfe-social-share-icons-brands-css" href="{% static 'css/brands.css' %}" media="all">
-	<link rel="stylesheet" id="hfe-social-share-icons-fontawesome-css" href="{% static 'css/fontawesome.css' %}" media="all">
-	<link rel="stylesheet" id="hfe-nav-menu-icons-css" href="{% static 'css/solid.css' %}" media="all">
-	<link rel="stylesheet" id="ekit-widget-styles-css" href="{% static 'css/widget-styles.css' %}" media="all">
-	<link rel="stylesheet" id="ekit-responsive-css" href="{% static 'css/responsive.css' %}" media="all">
+	<link rel="stylesheet" id="template-kit-export-css" href="assets/css/template-kit-export-public.css" media="all">
+	<link rel="stylesheet" id="rkit-offcanvas-style-css" href="assets/css/offcanvas.css" media="all">
+	<link rel="stylesheet" id="rkit-navmenu-style-css" href="assets/css/navmenu.css" media="all">
+	<link rel="stylesheet" id="rkit-headerinfo-style-css" href="assets/css/headerinfo.css" media="all">
+	<link rel="stylesheet" id="navmenu-rkit-style-css" href="assets/css/rkit-navmenu.css" media="all">
+	<link rel="stylesheet" id="rkit-search-style-css" href="assets/css/search.css" media="all">
+	<link rel="stylesheet" id="rkit-sitelogo-style-css" href="assets/css/site_logo.css" media="all">
+	<link rel="stylesheet" id="rkit-post-grid-style-css" href="assets/css/rkit-blog-post.css" media="all">
+	<link rel="stylesheet" id="rkit-post-block-style-css" href="assets/css/rkit-post-block.css" media="all">
+	<link rel="stylesheet" id="rkit-cta-style-css" href="assets/css/cta.css" media="all">
+	<link rel="stylesheet" id="rkit-blockquote-css" href="assets/css/blockquote.css" media="all">
+	<link rel="stylesheet" id="rkit-social-share-css" href="assets/css/social_share.css" media="all">
+	<link rel="stylesheet" id="rkit-team-style-css" href="assets/css/rkit_team.css" media="all">
+	<link rel="stylesheet" id="rkit-running_text-style-css" href="assets/css/running_text.css" media="all">
+	<link rel="stylesheet" id="rkit-animated_heading-style-css" href="assets/css/animated_heading.css" media="all">
+	<link rel="stylesheet" id="rkit-card_slider-style-css" href="assets/css/card_slider.css" media="all">
+	<link rel="stylesheet" id="rkit-accordion-style-css" href="assets/css/accordion.css" media="all">
+	<link rel="stylesheet" id="rkit-testimonial_carousel-style-css" href="assets/css/testimonial_carousel.css" media="all">
+	<link rel="stylesheet" id="rkit-swiper-css" href="assets/css/swiper-bundle.min.css" media="all">
+	<link rel="stylesheet" id="rkit-tabs-style-css" href="assets/css/tabs.css" media="all">
+	<link rel="stylesheet" id="rkit-progress-style-css" href="assets/css/progress-bar.css" media="all">
+	<link rel="stylesheet" id="counter-style-css" href="assets/css/counter.css" media="all">
+	<link rel="stylesheet" id="countdown-style-css" href="assets/css/countdown.css" media="all">
+	<link rel="stylesheet" id="rkit-pricelist-style-css" href="assets/css/pricelist.css" media="all">
+	<link rel="stylesheet" id="advanced_heading-style-css" href="assets/css/advanced_heading.css" media="all">
+	<link rel="stylesheet" id="image_comparison-style-css" href="assets/css/image_comparison.css" media="all">
+	<link rel="stylesheet" id="rkit-client_carousel-style-css" href="assets/css/client_carousel.css" media="all">
+	<link rel="stylesheet" id="postlist-style-css" href="assets/css/postlist.css" media="all">
+	<link rel="stylesheet" id="pricebox-style-css" href="assets/css/pricingbox.css" media="all">
+	<link rel="stylesheet" id="rkit-image_box-style-css" href="assets/css/image_box.css" media="all">
+	<link rel="stylesheet" id="rkit-image_accordion-style-css" href="assets/css/image_accordion.css" media="all">
+	<link rel="stylesheet" id="rkit-dual_button-style-css" href="assets/css/dual_button.css" media="all">
+	<link rel="stylesheet" id="price_list-style-css" href="assets/css/price_list.css" media="all">
+	<link rel="stylesheet" id="rkit-image_gallery-style-css" href="assets/css/image_gallery.css" media="all">
+	<link rel="stylesheet" id="rkit-home-slider-style-css" href="assets/css/home_slider.css" media="all">
+	<link rel="stylesheet" id="rkit-woo_product_grid-style-css" href="assets/css/woo_product_grid.css" media="all">
+	<link rel="stylesheet" id="elementor-icons-rtmicon-css" href="assets/css/rtmicons.css" media="all">
+	<link rel="stylesheet" id="rkit-widget-style-css" href="assets/css/rkit.css" media="all">
+	<link rel="stylesheet" id="hfe-style-css" href="assets/css/header-footer-elementor.css" media="all">
+	<link rel="stylesheet" id="elementor-frontend-css" href="assets/css/frontend.min.css" media="all">
+	<link rel="stylesheet" id="elementor-post-6-css" href="assets/css/post-6.css" media="all">
+	<link rel="stylesheet" id="e-animation-fadeInUp-css" href="assets/css/fadeInUp.min.css" media="all">
+	<link rel="stylesheet" id="widget-text-editor-css" href="assets/css/widget-text-editor.min.css" media="all">
+	<link rel="stylesheet" id="e-animation-bounceInUp-css" href="assets/css/bounceInUp.min.css" media="all">
+	<link rel="stylesheet" id="e-animation-fadeIn-css" href="assets/css/fadeIn.min.css" media="all">
+	<link rel="stylesheet" id="widget-image-css" href="assets/css/widget-image.min.css" media="all">
+	<link rel="stylesheet" id="widget-image-box-css" href="assets/css/widget-image-box.min.css" media="all">
+	<link rel="stylesheet" id="swiper-css" href="assets/css/swiper.min.css" media="all">
+	<link rel="stylesheet" id="mediaelement-css" href="assets/css/mediaelementplayer-legacy.min.css" media="all">
+	<link rel="stylesheet" id="wp-mediaelement-css" href="assets/css/wp-mediaelement.min.css" media="all">
+	<link rel="stylesheet" id="elementor-post-11-css" href="assets/css/post-11.css" media="all">
+	<link rel="stylesheet" id="elementor-post-101-css" href="assets/css/post-101.css" media="all">
+	<link rel="stylesheet" id="elementor-post-151-css" href="assets/css/post-151.css" media="all">
+	<link rel="stylesheet" id="cute-alert-css" href="assets/css/style.css" media="all">
+	<link rel="stylesheet" id="text-editor-style-css" href="assets/css/text-editor.css" media="all">
+	<link rel="stylesheet" id="hello-elementor-css" href="assets/css/style.min.css" media="all">
+	<link rel="stylesheet" id="hello-elementor-theme-style-css" href="assets/css/theme.min.css" media="all">
+	<link rel="stylesheet" id="hfe-elementor-icons-css" href="assets/css/elementor-icons.min.css" media="all">
+	<link rel="stylesheet" id="hfe-icons-list-css" href="assets/css/widget-icon-list.min.css" media="all">
+	<link rel="stylesheet" id="hfe-social-icons-css" href="assets/css/widget-social-icons.min.css" media="all">
+	<link rel="stylesheet" id="hfe-social-share-icons-brands-css" href="assets/css/brands.css" media="all">
+	<link rel="stylesheet" id="hfe-social-share-icons-fontawesome-css" href="assets/css/fontawesome.css" media="all">
+	<link rel="stylesheet" id="hfe-nav-menu-icons-css" href="assets/css/solid.css" media="all">
+	<link rel="stylesheet" id="ekit-widget-styles-css" href="assets/css/widget-styles.css" media="all">
+	<link rel="stylesheet" id="ekit-responsive-css" href="assets/css/responsive.css" media="all">
 	<link rel="stylesheet" id="google-fonts-1-css" href="assets/css" media="all">
-	<link rel="stylesheet" id="elementor-icons-ekiticons-css" href="{% static 'css/ekiticons.css' %}" media="all">
-	<link rel="stylesheet" id="elementor-icons-rtmicons-css" href="{% static 'css/rtmicon-regular.css' %}" media="all">
+	<link rel="stylesheet" id="elementor-icons-ekiticons-css" href="assets/css/ekiticons.css" media="all">
+	<link rel="stylesheet" id="elementor-icons-rtmicons-css" href="assets/css/rtmicon-regular.css" media="all">
 	<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-	<script src="{% static 'js/jquery.min.js' %}" id="jquery-core-js"></script>
-	<script src="{% static 'js/jquery-migrate.min.js' %}" id="jquery-migrate-js"></script>
+	<script src="assets/js/jquery.min.js" id="jquery-core-js"></script>
+	<script src="assets/js/jquery-migrate.min.js" id="jquery-migrate-js"></script>
 	<script id="jquery-js-after">
 		!function ($) { "use strict"; $(document).ready(function () { $(this).scrollTop() > 100 && $(".hfe-scroll-to-top-wrap").removeClass("hfe-scroll-to-top-hide"), $(window).scroll(function () { $(this).scrollTop() < 100 ? $(".hfe-scroll-to-top-wrap").fadeOut(300) : $(".hfe-scroll-to-top-wrap").fadeIn(300) }), $(".hfe-scroll-to-top-wrap").on("click", function () { $("html, body").animate({ scrollTop: 0 }, 300); return !1 }) }) }(jQuery);
 	</script>
-	<script src="{% static 'js/card_slider.js' %}" id="card-slider-script-js"></script>
-	<script src="{% static 'js/animated_heading.js' %}" id="animated-heading-script-js"></script>
-	<script src="{% static 'js/accordion.js' %}" id="accordion-script-js"></script>
-	<script src="{% static 'js/bar_chart.js' %}" id="bar_chart-script-js"></script>
-	<script src="{% static 'js/line_chart.js' %}" id="line_chart-script-js"></script>
-	<script src="{% static 'js/pie_chart.js' %}" id="pie_chart-script-js"></script>
-	<script src="{% static 'js/swiper-bundle.min.js' %}" id="swiperjs-js"></script>
-	<script src="{% static 'js/template-kit-export-public.js' %}" id="template-kit-export-js"></script>
+	<script src="assets/js/card_slider.js" id="card-slider-script-js"></script>
+	<script src="assets/js/animated_heading.js" id="animated-heading-script-js"></script>
+	<script src="assets/js/accordion.js" id="accordion-script-js"></script>
+	<script src="assets/js/bar_chart.js" id="bar_chart-script-js"></script>
+	<script src="assets/js/line_chart.js" id="line_chart-script-js"></script>
+	<script src="assets/js/pie_chart.js" id="pie_chart-script-js"></script>
+	<script src="assets/js/swiper-bundle.min.js" id="swiperjs-js"></script>
+	<script src="assets/js/template-kit-export-public.js" id="template-kit-export-js"></script>
 
-	<script src="{% static 'js/wp-emoji-release.min.js' %}" defer=""></script>
+	<script src="assets/js/wp-emoji-release.min.js" defer=""></script>
 </head>
 
 <body
@@ -589,48 +585,48 @@
 			document.addEventListener(event, lazyloadRunObserver);
 		});
 	</script>
-	<link rel="stylesheet" id="font-awesome-5-all-css" href="{% static 'css/all.min.css' %}" media="all">
-	<link rel="stylesheet" id="font-awesome-4-shim-css" href="{% static 'css/v4-shims.min.css' %}" media="all">
-	<link rel="stylesheet" id="elementor-post-857-css" href="{% static 'css/post-857.css' %}" media="all">
-	<link rel="stylesheet" id="widget-heading-css" href="{% static 'css/widget-heading.min.css' %}" media="all">
-	<link rel="stylesheet" id="widget-icon-list-css" href="{% static 'css/widget-icon-list(1).min.css' %}" media="all">
-	<link rel="stylesheet" id="widget-divider-css" href="{% static 'css/widget-divider.min.css' %}" media="all">
-	<link rel="stylesheet" id="widget-social-icons-css" href="{% static 'css/widget-social-icons(1).min.css' %}" media="all">
-	<link rel="stylesheet" id="e-apple-webkit-css" href="{% static 'css/apple-webkit.min.css' %}" media="all">
-	<script src="{% static 'js/offcanvas.js' %}" id="rkit-offcanvas-script-js"></script>
-	<script src="{% static 'js/navmenu.js' %}" id="rkit-navmenu-script-js"></script>
-	<script src="{% static 'js/rkit-navmenu.js' %}" id="navmenu-rkit-script-js"></script>
-	<script src="{% static 'js/social_share.js' %}" id="social-share-script-js"></script>
-	<script src="{% static 'js/running_text.js' %}" id="running-text-script-js"></script>
-	<script src="{% static 'js/chart.min.js' %}" id="chartjs-js"></script>
-	<script src="{% static 'js/testimonial_carousel.js' %}" id="rkit-testimonial_carousel-js"></script>
-	<script src="{% static 'js/tabs.js' %}" id="rkit-tabs-script-js"></script>
-	<script src="{% static 'js/progress.js' %}" id="progress-script-js"></script>
-	<script src="{% static 'js/counter.js' %}" id="rkit-counter-script-js"></script>
-	<script src="{% static 'js/countdown.js' %}" id="rkit-countdown-script-js"></script>
-	<script src="{% static 'js/image_comparison.js' %}" id="rkit-image-comparison-script-js"></script>
-	<script src="{% static 'js/client_carousel.js' %}" id="clientlogo-script-js"></script>
-	<script src="{% static 'js/image_comparison.js' %}" id="rkit-image_comparison-script-js"></script>
-	<script src="{% static 'js/image_accordion.js' %}" id="rkit-image_accordion-script-js"></script>
-	<script src="{% static 'js/image_gallery.js' %}" id="rkit-image_gallery-script-js"></script>
-	<script src="{% static 'js/masonry.pkgd.min.js' %}" id="rkit-image_gallery_masonry-script-js"></script>
-	<script src="{% static 'js/imagesloaded.pkgd.min.js' %}" id="rkit-image_gallery_masonry_loaded-script-js"></script>
-	<script src="{% static 'js/home_slider.js' %}" id="rkit-home-slider-script-js"></script>
-	<script src="{% static 'js/widget-scripts.js' %}" id="ekit-widget-scripts-js"></script>
-	<script src="{% static 'js/v4-shims.min.js' %}" id="font-awesome-4-shim-js"></script>
-	<script src="{% static 'js/frontend.js' %}" id="hfe-frontend-js-js"></script>
-	<script src="{% static 'js/comment-reply.min.js' %}" id="comment-reply-js" async="" data-wp-strategy="async"></script>
-	<script src="{% static 'js/webpack.runtime.min.js' %}" id="elementor-webpack-runtime-js"></script>
-	<script src="{% static 'js/frontend-modules.min.js' %}" id="elementor-frontend-modules-js"></script>
-	<script src="{% static 'js/core.min.js' %}" id="jquery-ui-core-js"></script>
+	<link rel="stylesheet" id="font-awesome-5-all-css" href="assets/css/all.min.css" media="all">
+	<link rel="stylesheet" id="font-awesome-4-shim-css" href="assets/css/v4-shims.min.css" media="all">
+	<link rel="stylesheet" id="elementor-post-857-css" href="assets/css/post-857.css" media="all">
+	<link rel="stylesheet" id="widget-heading-css" href="assets/css/widget-heading.min.css" media="all">
+	<link rel="stylesheet" id="widget-icon-list-css" href="assets/css/widget-icon-list(1).min.css" media="all">
+	<link rel="stylesheet" id="widget-divider-css" href="assets/css/widget-divider.min.css" media="all">
+	<link rel="stylesheet" id="widget-social-icons-css" href="assets/css/widget-social-icons(1).min.css" media="all">
+	<link rel="stylesheet" id="e-apple-webkit-css" href="assets/css/apple-webkit.min.css" media="all">
+	<script src="assets/js/offcanvas.js" id="rkit-offcanvas-script-js"></script>
+	<script src="assets/js/navmenu.js" id="rkit-navmenu-script-js"></script>
+	<script src="assets/js/rkit-navmenu.js" id="navmenu-rkit-script-js"></script>
+	<script src="assets/js/social_share.js" id="social-share-script-js"></script>
+	<script src="assets/js/running_text.js" id="running-text-script-js"></script>
+	<script src="assets/js/chart.min.js" id="chartjs-js"></script>
+	<script src="assets/js/testimonial_carousel.js" id="rkit-testimonial_carousel-js"></script>
+	<script src="assets/js/tabs.js" id="rkit-tabs-script-js"></script>
+	<script src="assets/js/progress.js" id="progress-script-js"></script>
+	<script src="assets/js/counter.js" id="rkit-counter-script-js"></script>
+	<script src="assets/js/countdown.js" id="rkit-countdown-script-js"></script>
+	<script src="assets/js/image_comparison.js" id="rkit-image-comparison-script-js"></script>
+	<script src="assets/js/client_carousel.js" id="clientlogo-script-js"></script>
+	<script src="assets/js/image_comparison.js" id="rkit-image_comparison-script-js"></script>
+	<script src="assets/js/image_accordion.js" id="rkit-image_accordion-script-js"></script>
+	<script src="assets/js/image_gallery.js" id="rkit-image_gallery-script-js"></script>
+	<script src="assets/js/masonry.pkgd.min.js" id="rkit-image_gallery_masonry-script-js"></script>
+	<script src="assets/js/imagesloaded.pkgd.min.js" id="rkit-image_gallery_masonry_loaded-script-js"></script>
+	<script src="assets/js/home_slider.js" id="rkit-home-slider-script-js"></script>
+	<script src="assets/js/widget-scripts.js" id="ekit-widget-scripts-js"></script>
+	<script src="assets/js/v4-shims.min.js" id="font-awesome-4-shim-js"></script>
+	<script src="assets/js/frontend.js" id="hfe-frontend-js-js"></script>
+	<script src="assets/js/comment-reply.min.js" id="comment-reply-js" async="" data-wp-strategy="async"></script>
+	<script src="assets/js/webpack.runtime.min.js" id="elementor-webpack-runtime-js"></script>
+	<script src="assets/js/frontend-modules.min.js" id="elementor-frontend-modules-js"></script>
+	<script src="assets/js/core.min.js" id="jquery-ui-core-js"></script>
 	
-	<script src="{% static 'js/frontend.min.js' %}" id="elementor-frontend-js"></script><span id="elementor-device-mode"
+	<script src="assets/js/frontend.min.js" id="elementor-frontend-js"></script><span id="elementor-device-mode"
 		class="elementor-screen-only"></span>
-	<script src="{% static 'js/animate-circle.min.js' %}" id="animate-circle-js"></script>
+	<script src="assets/js/animate-circle.min.js" id="animate-circle-js"></script>
 	<script id="elementskit-elementor-js-extra">
 		var ekit_config = { "ajaxurl": "https:\/\/kit.createbigsupply.com\/nuracare\/wp-admin\/admin-ajax.php", "nonce": "1ac75f9c80" };
 	</script>
-	<script src="{% static 'js/elementor.js' %}" id="elementskit-elementor-js"></script>
+	<script src="assets/js/elementor.js" id="elementskit-elementor-js"></script>
 
 
 

@@ -4,7 +4,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['localhost']
 
-# Additional development apps
+# Additional development appps
 INSTALLED_APPS += [
     'django_extensions',
 ]
