@@ -60,6 +60,16 @@ mental-health-platform/
 │   │   ├── db/             # User management
 │   │   └── others/         # Additional modules
 │   └── templates/          # HTML templates
+│   │   ├── base/
+│   │   │   ├── base.html   # Base template
+│   │   │   ├── navbar.html # Navbar template
+│   │   │   ├── footer.html # Footer template
+│   │   ├── pages/
+│   │   │   ├── auth/
+│   │   │   │   ├── signup.html # Signup page
+│   │   │   │   ├── signin.html # Signin page
+│   │   │   ├── index.html    # Home page
+│   ├── static/             # CSS, JS, images
 ├── data/                   # Jupyter notebooks and ML development
 ├── docker/                 # Deployment infra
 ├── manage.py               # Django management script
