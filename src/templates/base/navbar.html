@@ -8,7 +8,7 @@
             <div class="elementor-element elementor-element-cb5e803 elementor-widget-tablet__width-initial elementor-widget__width-initial elementor-widget elementor-widget-image"
                 data-id="cb5e803" data-element_type="widget" data-widget_type="image.default">
                 <div class="elementor-widget-container">
-                    <a href="#">
+                    <a href="{% url 'index' %}">
                         <img width="294" height="53" src="{% static 'imgs/cropped-Logo-harmony-2.png' %}"
                             class="attachment-full size-full wp-image-1072" alt=""> </a>
                 </div>
@@ -21,8 +21,11 @@
                     <div class="elementor-widget-container">
                         <div class="ekit-wid-con">
                             <div class="ekit-btn-wraper">
-                                <a href="#" class="elementskit-btn  whitespace--normal" id="">
-                                    Login </a>
+                                {% if request.path == '/' %}
+                                    <a href="{% url 'login' %}" class="elementskit-btn whitespace--normal">
+                                        Sign In
+                                    </a>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
