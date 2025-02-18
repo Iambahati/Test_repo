@@ -9,11 +9,9 @@
                 data-id="cb5e803" data-element_type="widget" data-widget_type="image.default">
                 <div class="elementor-widget-container">
                     <a href="{% url 'index' %}">
-                        <img width="294" height="53" src="{% static 'imgs/cropped-Logo-harmony-2.png' %}"
-                            class="attachment-full size-full wp-image-1072" alt=""> </a>
+                        <img width="147" height="26.5" src="{% static 'imgs/cropped-Logo-harmony-2.png' %}" class="attachment-full size-full wp-image-1072" alt=""> </a>
                 </div>
             </div>
-
             <div class="elementor-element elementor-element-f03421a e-con-full e-flex e-con e-child" data-id="f03421a"
                 data-element_type="container">
                 <div class="elementor-element elementor-element-c932c11 elementor-widget-mobile__width-initial elementor-hidden-tablet elementor-hidden-mobile elementor-align-center elementor-widget elementor-widget-elementskit-button"
@@ -22,15 +20,14 @@
                         <div class="ekit-wid-con">
                             <div class="ekit-btn-wraper">
                                 {% if request.path == '/' %}
-                                    <a href="{% url 'login' %}" class="elementskit-btn whitespace--normal">
-                                        Sign In
+                                    <a href="{% url 'login' %}" class="elementskit-btn whitespace--normal" style="font-size: 12px; padding: 5px 10px; border-radius: 10px;">
+                                        Login
                                     </a>
                                 {% endif %}
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
