@@ -1,5 +1,8 @@
 # Configuration
 PYTHON := python3
+ifeq ($(OS),Windows_NT)
+	PYTHON := python
+endif
 PIP := pip
 MANAGE := $(PYTHON) src/manage.py
 DOCKER_COMPOSE := docker-compose
