@@ -41,6 +41,7 @@ make run                # Start development server
 make ENV=prod install
 make ENV=prod docker-build
 make ENV=prod docker-up
+make ENV=prod env-setup
 ```
 
 3. **Access the Application**
