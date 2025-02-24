@@ -1,10 +1,26 @@
 # Configuration
-PYTHON := python3
 ifeq ($(OS),Windows_NT)
-	PYTHON := python
+    PYTHON := python
+    RM_RF := rmdir /s /q
+    MKDIR := mkdir
+    CP := copy
+    RMDIR := rmdir /s /q
+    SEP := $(strip \)
+    RM := del /f /q
+    ENV_SET := set
+else
+    PYTHON := python3
+    RM_RF := rm -rf
+    MKDIR := mkdir -p
+    CP := cp
+    RMDIR := rm -rf
+    SEP := /
+    RM := rm -f
+    ENV_SET := export
 endif
-PIP := pip
-MANAGE := $(PYTHON) src/manage.py
+
+PIP := $(PYTHON) -m pip
+MANAGE := $(PYTHON) src$(SEP)manage.py
 DOCKER_COMPOSE := docker-compose
 
 # Default environment
@@ -21,7 +37,7 @@ else
     ENV_FILE := .env
 endif
 
-.PHONY: help install run migrate migrations shell test clean docker-build docker-up docker-down env-setup create-app createsuperuser collectstatic dbshell
+.PHONY: help install run migrate migrations shell test clean docker-build docker-up docker-down env-setup create-app createsuperuser collectstatic dbshell init
 
 help:
 	@echo "Available commands:"
@@ -44,69 +60,67 @@ help:
 	@echo "  make ENV=local <command> Run command in local environment (default)"
 
 init:
-	mkdir -p src/db
-	DJANGO_SETTINGS_MODULE=$(DJANGO_SETTINGS) $(MANAGE) makemigrations
+	$(MKDIR) src$(SEP)db
+	$(ENV_SET) DJANGO_SETTINGS_MODULE=$(DJANGO_SETTINGS) && $(MANAGE) makemigrations
 
 # Environment setup
 env-setup:
-	@if [ "$(ENV)" = "prod" ]; then \
-		if [ ! -f .env.prod ]; then \
-			echo "Creating production environment file .env.prod"; \
-			echo "# Django Production Settings" > .env.prod; \
-			echo "SECRET_KEY=$(shell openssl rand -base64 32 | tr -d '=' | tr -d '\n')" >> .env.prod; \
-			echo "DJANGO_SETTINGS_MODULE=core.settings.prod" >> .env.prod; \
-			echo "DEBUG=0" >> .env.prod; \
-			echo "ALLOWED_HOSTS=your-domain.com,www.your-domain.com" >> .env.prod; \
-			echo "# Database Configuration" >> .env.prod; \
-			echo "DB_NAME=django_prod" >> .env.prod; \
-			echo "DB_USER=django_user" >> .env.prod; \
-			echo "DB_PASSWORD=$(shell openssl rand -base64 12)" >> .env.prod; \
-			echo "DB_HOST=db" >> .env.prod; \
-			echo "DB_PORT=5432" >> .env.prod; \
-			echo "Created .env.prod and DJANGO_SETTINGS_MODULE set to core.settings.prod"; \
+ifeq ($(OS),Windows_NT)
+	@if not exist $(ENV_FILE) ( \
+		if exist .env.example ( \
+			$(CP) .env.example $(ENV_FILE) && \
+			echo SECRET_KEY=$$($(PYTHON) -c "import secrets; print(secrets.token_urlsafe(32))") >> $(ENV_FILE) && \
+			echo DJANGO_SETTINGS_MODULE=$(DJANGO_SETTINGS) >> $(ENV_FILE) && \
+			echo DEBUG=True >> $(ENV_FILE) \
+		) else ( \
+			echo Error: .env.example not found \
+			exit 1 \
+		) \
+	) else ( \
+		echo $(ENV_FILE) already exists. \
+	)
+else
+	@if [ ! -f $(ENV_FILE) ]; then \
+		if [ -f .env.example ]; then \
+			$(CP) .env.example $(ENV_FILE) && \
+			echo "SECRET_KEY=$$(openssl rand -base64 32 | tr -d '=' | tr -d '\n')" >> $(ENV_FILE) && \
+			echo "DJANGO_SETTINGS_MODULE=$(DJANGO_SETTINGS)" >> $(ENV_FILE) && \
+			echo "DEBUG=True" >> $(ENV_FILE); \
 		else \
-			echo ".env.prod already exists."; \
+			echo "Error: .env.example not found"; \
+			exit 1; \
 		fi; \
 	else \
-		if [ ! -f .env ]; then \
-			if [ -f .env.example ]; then \
-				cp .env.example .env && \
-				sed -i.bak "s|DJANGO_SETTINGS_MODULE=.*|DJANGO_SETTINGS_MODULE=core.settings.local|g" .env && \
-				sed -i.bak "s|DEBUG=.*|DEBUG=True|g" .env && \
-				sed -i.bak "s|SECRET_KEY=.*|SECRET_KEY=$(shell openssl rand -base64 32 | tr -d '=' | tr -d '\n')|g" .env && \
-				rm .env.bak; \
-				echo "Created .env and DJANGO_SETTINGS_MODULE set to core.settings.local"; \
-			else \
-				echo "Error: .env.example not found"; \
-				exit 1; \
-			fi; \
-		else \
-			echo ".env already exists."; \
-		fi; \
+		echo "$(ENV_FILE) already exists."; \
 	fi
+endif
 
 install:
 	$(PIP) install -r requirements.txt
 
 run:
-	$(MANAGE) runserver 0.0.0.0:8000
+	$(ENV_SET) DJANGO_SETTINGS_MODULE=$(DJANGO_SETTINGS) && $(MANAGE) runserver 0.0.0.0:8000
 
 migrate:
-	$(MANAGE) migrate
+	$(ENV_SET) DJANGO_SETTINGS_MODULE=$(DJANGO_SETTINGS) && $(MANAGE) migrate
 
 migrations:
-	$(MANAGE) makemigrations
+	$(ENV_SET) DJANGO_SETTINGS_MODULE=$(DJANGO_SETTINGS) && $(MANAGE) makemigrations
 
 shell:
-	$(MANAGE) shell
+	$(ENV_SET) DJANGO_SETTINGS_MODULE=$(DJANGO_SETTINGS) && $(MANAGE) shell
 
 test:
-	$(MANAGE) test
+	$(ENV_SET) DJANGO_SETTINGS_MODULE=$(DJANGO_SETTINGS) && $(MANAGE) test
 
 clean:
+ifeq ($(OS),Windows_NT)
+	@for /r %%x in (*.pyc) do del %%x
+	@for /d /r . %%d in (__pycache__) do @if exist "%%d" rd /s /q "%%d"
+else
 	find . -type f -name "*.pyc" -delete
 	find . -type d -name "__pycache__" -delete
-	# find . -type f -name "*.sqlite3" -delete
+endif
 
 docker-build:
 	$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) build
@@ -118,6 +132,25 @@ docker-down:
 	$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) down
 
 create-app:
+ifeq ($(OS),Windows_NT)
+	@if "$(filter-out $@,$(MAKECMDGOALS))"=="" ( \
+		echo Error: App name(s) required. Usage: make create-app app1 [app2 ...] && \
+		exit 1 \
+	)
+	@if not exist "src\core\settings\base.py" ( \
+		echo Error: src\core\settings\base.py not found && \
+		exit 1 \
+	)
+	@for %%a in ($(filter-out $@,$(MAKECMDGOALS))) do ( \
+		echo Creating Django app: %%a && \
+		if not exist "src\apps\%%a" mkdir "src\apps\%%a" && \
+		django-admin startapp %%a "src\apps\%%a" && \
+		echo from django.apps import AppConfig > "src\apps\%%a\apps.py" && \
+		echo. >> "src\apps\%%a\apps.py" && \
+		echo class %%~nA^Config(AppConfig): >> "src\apps\%%a\apps.py" && \
+		echo     name = 'apps.%%a' >> "src\apps\%%a\apps.py" \
+	)
+else
 	@if [ -z "$(filter-out $@,$(MAKECMDGOALS))" ]; then \
 		echo "Error: App name(s) required. Usage: make create-app app1 [app2 ...]"; \
 		exit 1; \
@@ -129,31 +162,21 @@ create-app:
 	@for app in $(filter-out $@,$(MAKECMDGOALS)); do \
 		echo "Creating Django app: $$app"; \
 		if [ ! -d "src/apps/$$app" ]; then \
-			mkdir -p src/apps/$$app; \
+			$(MKDIR) src/apps/$$app; \
 		fi; \
 		django-admin startapp $$app src/apps/$$app; \
-		touch src/apps/$$app/apps.py; \
-		capitalized_app=$$(echo "$$app" | sed 's/.*/\u&/'); \
-		echo "from django.apps import AppConfig\n\nclass $${capitalized_app}Config(AppConfig):\n    name = 'apps.$$app'" > src/apps/$$app/apps.py; \
-		echo "Updating INSTALLED_APPS in settings..."; \
-		if ! grep -q "'apps.$$app'" src/core/settings/base.py; then \
-			sed -i '/INSTALLED_APPS = \[/,/]/ s/]/    "apps.'"$$app"'",\n]/' src/core/settings/base.py; \
-			echo "✓ Created app $$app and updated INSTALLED_APPS"; \
-		else \
-			 echo "App $$app already registered"; \
-		fi; \
+		echo "from django.apps import AppConfig\n\nclass $$(echo $$app | sed 's/.*/\u&/')Config(AppConfig):\n    name = 'apps.$$app'" > src/apps/$$app/apps.py; \
 	done
+endif
 
 %:
 	@:
 
 createsuperuser:
-	$(MANAGE) createsuperuser
+	$(ENV_SET) DJANGO_SETTINGS_MODULE=$(DJANGO_SETTINGS) && $(MANAGE) createsuperuser
 
 collectstatic:
-	$(MANAGE) collectstatic --noinput
+	$(ENV_SET) DJANGO_SETTINGS_MODULE=$(DJANGO_SETTINGS) && $(MANAGE) collectstatic --noinput
 
 dbshell:
-	$(MANAGE) dbshell
-
-
+	$(ENV_SET) DJANGO_SETTINGS_MODULE=$(DJANGO_SETTINGS) && $(MANAGE) dbshell
