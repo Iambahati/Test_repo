@@ -69,20 +69,21 @@ ifeq ($(OS),Windows_NT)
 	@if not exist $(ENV_FILE) ( \
 		if exist .env.example ( \
 			$(CP) .env.example $(ENV_FILE) && \
-			echo SECRET_KEY=$(shell $(PYTHON) -c "import secrets; print(secrets.token_urlsafe(32))") >> $(ENV_FILE) && \
+			echo SECRET_KEY=$$($(PYTHON) -c "import secrets; print(secrets.token_urlsafe(32))") >> $(ENV_FILE) && \
 			echo DJANGO_SETTINGS_MODULE=$(DJANGO_SETTINGS) >> $(ENV_FILE) && \
 			echo DEBUG=True >> $(ENV_FILE) \
 		) else ( \
-			echo Error: .env.example not found & exit 1 \
+			echo Error: .env.example not found \
+			exit 1 \
 		) \
 	) else ( \
 		echo $(ENV_FILE) already exists. \
 	)
 else
-	@if [ ! -f "$(ENV_FILE)" ]; then \
+	@if [ ! -f $(ENV_FILE) ]; then \
 		if [ -f .env.example ]; then \
 			$(CP) .env.example $(ENV_FILE) && \
-			echo "SECRET_KEY=$$(python3 -c 'import secrets; print(secrets.token_urlsafe(32))')" >> $(ENV_FILE) && \
+			echo "SECRET_KEY=$$(openssl rand -base64 32 | tr -d '=' | tr -d '\n')" >> $(ENV_FILE) && \
 			echo "DJANGO_SETTINGS_MODULE=$(DJANGO_SETTINGS)" >> $(ENV_FILE) && \
 			echo "DEBUG=True" >> $(ENV_FILE); \
 		else \
@@ -94,12 +95,15 @@ else
 	fi
 endif
 
-
 install:
 	$(PIP) install -r requirements.txt
 
 run:
-	$(ENV_SET) DJANGO_SETTINGS_MODULE=$(DJANGO_SETTINGS) && $(MANAGE) runserver 0.0.0.0:8000
+ifeq ($(OS),Windows_NT)
+	$(ENV_SET) "DJANGO_SETTINGS_MODULE=$(DJANGO_SETTINGS)" && $(MANAGE) runserver 0.0.0.0:8000
+else
+	$(ENV_SET) DJANGO_SETTINGS_MODULE=$(DJANGO_SETTINGS) $(SEP) $(MANAGE) runserver 0.0.0.0:8000
+endif
 
 migrate:
 	$(ENV_SET) DJANGO_SETTINGS_MODULE=$(DJANGO_SETTINGS) && $(MANAGE) migrate
@@ -116,10 +120,10 @@ test:
 clean:
 ifeq ($(OS),Windows_NT)
 	@for /r %%x in (*.pyc) do del %%x
-	@for /d /r . %%d in (__pycache__) do @if exist "%%d" rd /s /q "%%d"
+	@for /d /r . %%d in (_pycache_) do @if exist "%%d" rd /s /q "%%d"
 else
 	find . -type f -name "*.pyc" -delete
-	find . -type d -name "__pycache__" -delete
+	find . -type d -name "_pycache_" -delete
 endif
 
 docker-build:
