@@ -1,1 +1,290 @@
 {% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- =======================
+Page Banner START -->
+<section class="py-4">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="bg-light p-4 text-center rounded-3">
+					<h1 class="m-0">About Nuracare</h1>
+					<div class="d-flex justify-content-center">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb breadcrumb-dots mb-0">
+								<li class="breadcrumb-item"><a href="/">Home</a></li>
+								<li class="breadcrumb-item active" aria-current="page">About Us</li>
+							</ol>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- =======================
+Page Banner END -->
+
+<!-- =======================
+About Section START -->
+<section class="pt-4 pb-0">
+	<div class="container">
+		<div class="row">
+			<!-- Left part START -->
+			<div class="col-lg-7">
+				<h2 class="fs-1">Our Mission</h2>
+				<p class="mb-4">At Nuracare, we believe that mental health is just as important as physical health. Our mission is to make mental healthcare accessible, affordable, and stigma-free for everyone. We're committed to creating a supportive community where people can find the resources and guidance they need on their journey toward better mental wellness.</p>
+				
+				<h3 class="fs-2">Who We Are</h3>
+				<p>Founded in 2020, Nuracare brings together experienced mental health professionals, technology experts, and individuals passionate about mental wellness. Our diverse team works collaboratively to create innovative solutions that bridge the gaps in traditional mental healthcare systems.</p>
+				
+				<div class="row mt-4">
+					<div class="col-md-6">
+						<div class="card card-body bg-light border-0 p-4 mb-4">
+							<h4 class="mb-3"><i class="fas fa-brain text-primary me-2"></i>Expert Guidance</h4>
+							<p class="mb-0">All our therapists and counselors are licensed professionals with extensive experience in various mental health specialties.</p>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="card card-body bg-light border-0 p-4 mb-4">
+							<h4 class="mb-3"><i class="fas fa-shield-alt text-primary me-2"></i>Safe & Confidential</h4>
+							<p class="mb-0">Your privacy is our priority. All sessions and information shared on our platform are completely confidential.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Left part END -->
+			
+			<!-- Right part START -->
+			<div class="col-lg-5 position-relative">
+				<!-- SVG decoration -->
+				<figure class="position-absolute bottom-0 end-0 mb-n5 d-none d-lg-block">
+					<svg width="180px" height="180px" viewBox="0 0 600 600">
+						<path class="fill-primary opacity-1" d="M492.9,153c-1.4-11.5-3.4-21.9-5.8-31.1c-5.1,8.4-10.8,16.3-16.8,23.6C478.5,149.2,485.9,151.4,492.9,153z"/>
+						<path class="fill-primary opacity-2" d="M492.9,153c-7-1.6-14.4-3.8-22.6-7.4c-29.4,26.6-65.1,43.3-103,45c-0.9,0-1.8,0.1-2.7,0.1 c-0.3,0-0.7,0-1,0c-0.3,0-0.7,0-1,0c-13.6,0-26.5-2.4-38.5-6.7c-9.1-3.3-17.9-7.5-26.1-12.8c-34.5-22.2-59.5-59.1-65-102.2 c-0.1-1.1-0.3-2.2-0.4-3.3c0-0.3-0.1-0.7-0.1-1c0-0.3-0.1-0.7-0.1-1c-1.8-12.3-1.5-25,0.9-37.6c7.9-41.9,34.7-78.4,73.1-99.6 C293.4,4.9,268.7,0,242.5,0C125.8,0,31.3,94.5,31.3,211.1s94.5,211.1,211.1,211.1c99,0,182.2-68.3,205.1-160.4 C458.2,211.6,477.8,186.2,492.9,153z"/>
+						<path class="fill-primary opacity-3" d="M228.6,311.7c-83.1,0-151.3-68.3-151.3-151.3c0-83.1,68.3-151.3,151.3-151.3 c39.3,0,75.1,15.1,101.8,39.8c-42.7,18.2-74.8,57.3-83.1,104c-2.4,12.5-2.8,25.2-1.1,37.4c0,0.2,0,0.3,0.1,0.5 c0,0.2,0,0.3,0.1,0.5c0.9,11.8,3.5,23.3,7.5,34.3C247.4,237.4,240,250,231,261.4C231,261.4,239.4,310.3,228.6,311.7z"/>
+					</svg>
+				</figure>
+				
+				<!-- Image -->
+				<img src="{% static 'imgs/about/team-meeting.jpg' %}" class="rounded-3 shadow" alt="About Nuracare">
+				
+				<!-- Features START -->
+				<div class="row g-4 mt-5">
+					<!-- Item -->
+					<div class="col-sm-6">
+						<div class="d-flex align-items-center">
+							<span class="icon-lg text-white bg-primary rounded-circle me-4"><i class="fas fa-user-friends"></i></span>
+							<div>
+								<h5 class="mb-0">5000+</h5>
+								<p class="mb-0">People Helped</p>
+							</div>
+						</div>
+					</div>
+					<!-- Item -->
+					<div class="col-sm-6">
+						<div class="d-flex align-items-center">
+							<span class="icon-lg text-white bg-primary rounded-circle me-4"><i class="fas fa-certificate"></i></span>
+							<div>
+								<h5 class="mb-0">100+</h5>
+								<p class="mb-0">Certified Therapists</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Features END -->
+			</div>
+			<!-- Right part END -->
+		</div>
+	</div>
+</section>
+<!-- =======================
+About Section END -->
+
+<!-- =======================
+Values Section START -->
+<section class="pt-0 pt-lg-5">
+	<div class="container">
+		<!-- Title -->
+		<div class="row mb-4">
+			<div class="col-lg-8 mx-auto text-center">
+				<h2 class="fs-1">Our Values</h2>
+				<p class="mb-0">The principles that guide everything we do at Nuracare</p>
+			</div>
+		</div>
+
+		<div class="row g-4">
+			<!-- Value item -->
+			<div class="col-lg-4 col-md-6">
+				<div class="card card-body shadow h-100 p-4">
+					<div class="icon-lg bg-primary bg-opacity-10 text-primary rounded-circle mb-4"><i class="fas fa-heart"></i></div>
+					<h4 class="mb-3">Compassion</h4>
+					<p class="mb-0">We approach every individual with empathy, understanding, and a genuine desire to help. We believe in treating everyone with dignity and respect.</p>
+				</div>
+			</div>
+
+			<!-- Value item -->
+			<div class="col-lg-4 col-md-6">
+				<div class="card card-body shadow h-100 p-4">
+					<div class="icon-lg bg-primary bg-opacity-10 text-primary rounded-circle mb-4"><i class="fas fa-user-shield"></i></div>
+					<h4 class="mb-3">Safety</h4>
+					<p class="mb-0">We create secure spaces—both digital and emotional—where people can feel comfortable sharing their struggles without judgment or fear.</p>
+				</div>
+			</div>
+
+			<!-- Value item -->
+			<div class="col-lg-4 col-md-6">
+				<div class="card card-body shadow h-100 p-4">
+					<div class="icon-lg bg-primary bg-opacity-10 text-primary rounded-circle mb-4"><i class="fas fa-hand-holding-heart"></i></div>
+					<h4 class="mb-3">Accessibility</h4>
+					<p class="mb-0">We strive to make mental healthcare available to everyone, regardless of location, background, or financial situation.</p>
+				</div>
+			</div>
+
+			<!-- Value item -->
+			<div class="col-lg-4 col-md-6">
+				<div class="card card-body shadow h-100 p-4">
+					<div class="icon-lg bg-primary bg-opacity-10 text-primary rounded-circle mb-4"><i class="fas fa-lightbulb"></i></div>
+					<h4 class="mb-3">Innovation</h4>
+					<p class="mb-0">We continuously explore new approaches and technologies to improve mental healthcare delivery and effectiveness.</p>
+				</div>
+			</div>
+
+			<!-- Value item -->
+			<div class="col-lg-4 col-md-6">
+				<div class="card card-body shadow h-100 p-4">
+					<div class="icon-lg bg-primary bg-opacity-10 text-primary rounded-circle mb-4"><i class="fas fa-users"></i></div>
+					<h4 class="mb-3">Community</h4>
+					<p class="mb-0">We believe in the power of connection and support networks in fostering mental wellness and recovery.</p>
+				</div>
+			</div>
+
+			<!-- Value item -->
+			<div class="col-lg-4 col-md-6">
+				<div class="card card-body shadow h-100 p-4">
+					<div class="icon-lg bg-primary bg-opacity-10 text-primary rounded-circle mb-4"><i class="fas fa-star"></i></div>
+					<h4 class="mb-3">Excellence</h4>
+					<p class="mb-0">We are committed to maintaining the highest standards in both our professional practices and the quality of care we provide.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- =======================
+Values Section END -->
+
+<!-- =======================
+Team Section START -->
+<section>
+	<div class="container">
+		<!-- Title -->
+		<div class="row mb-4">
+			<div class="col-lg-8 mx-auto text-center">
+				<h2 class="fs-1">Our Leadership Team</h2>
+				<p class="mb-0">Meet the passionate individuals guiding Nuracare's mission</p>
+			</div>
+		</div>
+
+		<div class="row g-4">
+			<!-- Team member -->
+			<div class="col-lg-3 col-sm-6">
+				<div class="card card-body shadow text-center h-100">
+					<div class="avatar avatar-xxl mx-auto mb-3">
+						<img class="avatar-img rounded-circle" src="{% static 'imgs/about/team-member-1.jpg' %}" alt="Team Member">
+					</div>
+					<h5 class="mb-1">Dr. Sarah Johnson</h5>
+					<p class="mb-2 text-primary">Founder & CEO</p>
+					<p class="mb-3">Clinical Psychologist with 15+ years of experience in mental healthcare innovation.</p>
+					<ul class="list-inline mb-0">
+						<li class="list-inline-item"><a class="btn btn-sm px-2 bg-facebook" href="#"><i class="fab fa-fw fa-facebook-f"></i></a></li>
+						<li class="list-inline-item"><a class="btn btn-sm px-2 bg-linkedin" href="#"><i class="fab fa-fw fa-linkedin-in"></i></a></li>
+						<li class="list-inline-item"><a class="btn btn-sm px-2 bg-twitter" href="#"><i class="fab fa-fw fa-twitter"></i></a></li>
+					</ul>
+				</div>
+			</div>
+
+			<!-- Team member -->
+			<div class="col-lg-3 col-sm-6">
+				<div class="card card-body shadow text-center h-100">
+					<div class="avatar avatar-xxl mx-auto mb-3">
+						<img class="avatar-img rounded-circle" src="{% static 'imgs/about/team-member-2.jpg' %}" alt="Team Member">
+					</div>
+					<h5 class="mb-1">Michael Chen</h5>
+					<p class="mb-2 text-primary">CTO</p>
+					<p class="mb-3">Technology expert dedicated to creating secure and intuitive mental health platforms.</p>
+					<ul class="list-inline mb-0">
+						<li class="list-inline-item"><a class="btn btn-sm px-2 bg-facebook" href="#"><i class="fab fa-fw fa-facebook-f"></i></a></li>
+						<li class="list-inline-item"><a class="btn btn-sm px-2 bg-linkedin" href="#"><i class="fab fa-fw fa-linkedin-in"></i></a></li>
+						<li class="list-inline-item"><a class="btn btn-sm px-2 bg-twitter" href="#"><i class="fab fa-fw fa-twitter"></i></a></li>
+					</ul>
+				</div>
+			</div>
+
+			<!-- Team member -->
+			<div class="col-lg-3 col-sm-6">
+				<div class="card card-body shadow text-center h-100">
+					<div class="avatar avatar-xxl mx-auto mb-3">
+						<img class="avatar-img rounded-circle" src="{% static 'imgs/about/team-member-3.jpg' %}" alt="Team Member">
+					</div>
+					<h5 class="mb-1">Dr. Amara Patel</h5>
+					<p class="mb-2 text-primary">Clinical Director</p>
+					<p class="mb-3">Psychiatrist focused on evidence-based treatments and therapist training programs.</p>
+					<ul class="list-inline mb-0">
+						<li class="list-inline-item"><a class="btn btn-sm px-2 bg-facebook" href="#"><i class="fab fa-fw fa-facebook-f"></i></a></li>
+						<li class="list-inline-item"><a class="btn btn-sm px-2 bg-linkedin" href="#"><i class="fab fa-fw fa-linkedin-in"></i></a></li>
+						<li class="list-inline-item"><a class="btn btn-sm px-2 bg-twitter" href="#"><i class="fab fa-fw fa-twitter"></i></a></li>
+					</ul>
+				</div>
+			</div>
+
+			<!-- Team member -->
+			<div class="col-lg-3 col-sm-6">
+				<div class="card card-body shadow text-center h-100">
+					<div class="avatar avatar-xxl mx-auto mb-3">
+						<img class="avatar-img rounded-circle" src="{% static 'imgs/about/team-member-4.jpg' %}" alt="Team Member">
+					</div>
+					<h5 class="mb-1">James Wilson</h5>
+					<p class="mb-2 text-primary">Community Outreach</p>
+					<p class="mb-3">Mental health advocate specializing in reducing stigma and building support networks.</p>
+					<ul class="list-inline mb-0">
+						<li class="list-inline-item"><a class="btn btn-sm px-2 bg-facebook" href="#"><i class="fab fa-fw fa-facebook-f"></i></a></li>
+						<li class="list-inline-item"><a class="btn btn-sm px-2 bg-linkedin" href="#"><i class="fab fa-fw fa-linkedin-in"></i></a></li>
+						<li class="list-inline-item"><a class="btn btn-sm px-2 bg-twitter" href="#"><i class="fab fa-fw fa-twitter"></i></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- =======================
+Team Section END -->
+
+<!-- =======================
+Call to Action START -->
+<section class="pt-0">
+	<div class="container">
+		<div class="card card-body bg-primary p-4 p-sm-5 rounded-3">
+			<div class="row g-4 position-relative">
+				<!-- SVG decoration -->
+				<figure class="position-absolute top-50 end-0 translate-middle-y me-n7 d-none d-xl-block">
+					<svg width="190" height="190">
+						<path class="fill-white opacity-1" d="M57.7,98.9c4.1-8.5,5.1-17.3,6.5-26.3c0.8-5.3,1.8-10.7,2.5-16c0.2-1.4,0.8-2.2,2.4-2.2c7,0.1,14,0.3,21,0.4c4-0.1,5.9,2.5,8.6,3.9c7.6,4.2,15.2,8.6,22.8,12.9c5.2,2.9,10.4,5.9,16,7.9c3.1,1.1,6.3,1.7,9.3,3.1c1.9,0.9,2.9,2.2,3,4.4c0.1,3.5,0.1,7,0.1,10.5c0,1.7-0.9,2.2-2.5,2.1c-1.5-0.1-3-0.2-4.4-0.3c-5.3-0.3-5.3-0.3-5.3,5c0,5.2,0,5.2-5.2,5.2c-1,0-2,0-3,0c-2.5,0-2.7,0.5-1.7,2.7c0.8,1.7,1.7,3.4,2.6,5.1c1.8,3.5,1.8,3.4-1.9,4.3c-1.2,0.3-2.3,0.8-3.5,1.3c-2.7,1.2-2.8,1.1-2.8-1.9c0-2.8-0.6-3.6-3.4-4c-2.9-0.4-5.2,0.8-6.1,3.4c-1,2.9-0.8,3.1,2.2,3.5c1.4,0.2,2.8,0.4,4.2,0.3c1.8-0.1,2.9,0.6,3.5,2.3c0.8,2.2-2.1,5.2-5.8,5.2c-3.2,0-6.3-0.3-9.5-0.5c-10.3-0.7-20.7-1.1-31-1.7c-7.1-0.4-14.3-0.9-21.4-1.3C43,127.3,35,126.8,27.1,126c-8.4-0.8-16.8-1.2-25.1-2.2c-3.6-0.4-3.9-0.9-2.9-4.5c2.2-8.2,6.3-15.2,11.8-21.5c0.6-0.7,1.2-1.1,2.1-0.5c0.8,0.5,0.8,1.2,0.4,2c-0.5,1-1.1,2-1.6,3.1c-1.9,4.7-2.3,9.4-0.2,14.2c0.5,1.2,1.1,1.1,1.9,0.2c7.1-7.4,14.9-14.1,22.2-21.2c2.1-2,6.3-3.5,4.3-7.7c-1.2-2.6-0.9-5.4-0.5-8.2c0.2-1.1,0.4-2.3,0.9-3.3c0.7-1.3,1.2-1.5,2.7-0.8c-0.7,3.5-0.7,7,0,10.5c0.5,2.3,1.5,2.8,3.7,1.9c4.3-1.8,8.7-3.4,12.9-5.4c3.1-1.4,3.5-0.5,3.3,2.2c-0.1,0.8-0.3,1.7-0.5,2.5c-1.5,4.8-1.5,4.8,3.4,5.8c5.7,1.2,11.3,2.4,17,3.5C51.3,100,54.5,99.5,57.7,98.9z"/>
+					</svg>
+				</figure>
+				
+				<!-- Action box -->
+				<div class="col-lg-8 mx-auto text-center">
+					<h3 class="text-white">Begin Your Mental Wellness Journey</h3>
+					<p class="text-white mb-4">Take the first step towards better mental health today. Our compassionate team is ready to support you.</p>
+					<a href="/contact" class="btn btn-light me-sm-2">Contact Us</a>
+					<a href="/services" class="btn btn-outline-light">Explore Our Services</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- =======================
+Call to Action END -->
+
+{% endblock %}
