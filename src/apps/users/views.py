@@ -10,3 +10,9 @@ def signup_view(request):
 
 def signin_view(request):
     return render(request, 'pages/auth/signin.html')
+
+def about(request):
+    return render(request, 'pages/about/about.html')
+
+def contact(request):
+    return render(request, 'pages/about/contacts.html')
