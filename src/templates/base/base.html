@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{% comment %} <!DOCTYPE html>
 {% load static %}
 <html lang="en">
 <head>
@@ -127,5 +127,1023 @@ Footer END -->
 <!-- Template Functions -->
 <script src="{% static 'js/functions.js' %}"></script>
 
+</body>
+</html> {% endcomment %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NuraCare - Healthcare Platform</title>
+  <style>
+    :root {
+      /* Brand Colors */
+      --color-primary: #003A3C;
+      --color-secondary: #1B1B1B;
+      --color-accent: #1A5A4C;
+      --color-brand-orange: #ED6F34;
+      /* Text Colors */
+      --color-text-primary: #4D4A4F;
+      --color-text-dark: #001C38;
+      --color-text-light: #FFFFFF;
+      /* Status Colors */
+      --color-success: #00BF36;
+      --color-warning: #FF9900;
+      --color-error: #CC0000;
+      /* Neutral Colors */
+      --color-white: #FFFFFF;
+      --color-gray-100: #F5F5F5;
+      --color-gray-200: #EBEBEB;
+      --color-gray-300: #DCDCDC;
+      /* Background Colors */
+      --color-bg-light: #F4FFF0;
+      --color-bg-primary-18: #003A3D18;
+      --color-bg-primary-06: #003A3D06;
+      --color-transparent: #02010100;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: var(--color-white);
+      color: var(--color-text-primary);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      border: 1px solid var(--color-primary);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--color-accent);
+      border-color: var(--color-accent);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--color-primary);
+      border: 1px solid var(--color-primary);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--color-bg-primary-06);
+    }
+
+    .btn-white {
+      background-color: var(--color-white);
+      color: var(--color-primary);
+      border: 1px solid var(--color-white);
+    }
+
+    .btn-white:hover {
+      background-color: var(--color-gray-100);
+      border-color: var(--color-gray-100);
+    }
+
+    /* Common Navbar */
+    .navbar {
+      background-color: var(--color-white);
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-icon {
+      width: 30px;
+      height: 30px;
+      margin-right: 8px;
+      background-color: var(--color-primary);
+      border-radius: 6px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .navbar-menu {
+      display: flex;
+      gap: 30px;
+    }
+
+    .navbar-link {
+      font-weight: 500;
+      color: var(--color-text-primary);
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .navbar-link:hover,
+    .navbar-link.active {
+      color: var(--color-primary);
+    }
+
+    .navbar-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      height: 2px;
+      width: 100%;
+      background-color: var(--color-primary);
+    }
+
+    .navbar-actions {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .mobile-menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--color-text-primary);
+      cursor: pointer;
+    }
+
+    /* Landing Page Styles */
+    .hero {
+      padding: 80px 0;
+      background: linear-gradient(135deg, var(--color-bg-light), var(--color-bg-primary-18));
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-container {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .hero-content {
+      flex: 1;
+    }
+
+    .hero-title {
+      font-size: 3rem;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: var(--color-text-dark);
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: var(--color-text-primary);
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--color-text-primary);
+    }
+
+    .hero-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+
+    .hero-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+    }
+
+    .features {
+      padding: 80px 0;
+      background-color: var(--color-white);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      color: var(--color-text-dark);
+      margin-bottom: 15px;
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--color-text-primary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .feature-card {
+      background-color: var(--color-white);
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature-icon {
+      width: 60px;
+      height: 60px;
+      background-color: var(--color-bg-primary-18);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: var(--color-primary);
+      font-size: 24px;
+    }
+
+    .feature-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--color-text-dark);
+      margin-bottom: 10px;
+    }
+
+    .feature-description {
+      color: var(--color-text-primary);
+      line-height: 1.6;
+    }
+
+    .testimonials {
+      padding: 80px 0;
+      background-color: var(--color-bg-light);
+    }
+
+    .testimonials-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .testimonial-cards {
+      display: flex;
+      gap: 30px;
+      margin-top: 50px;
+      max-width: 100%;
+      overflow-x: auto;
+      padding: 20px 0;
+    }
+
+    .testimonial-card {
+      background-color: var(--color-white);
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+      min-width: 350px;
+      max-width: 350px;
+    }
+
+    .testimonial-rating {
+      display: flex;
+      gap: 5px;
+      margin-bottom: 15px;
+      color: var(--color-warning);
+    }
+
+    .testimonial-content {
+      font-size: 1.1rem;
+      color: var(--color-text-primary);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      overflow: hidden;
+      background-color: var(--color-gray-200);
+    }
+
+    .author-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .author-info h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--color-text-dark);
+    }
+
+    .author-info p {
+      font-size: 0.9rem;
+      color: var(--color-text-primary);
+    }
+
+    .cta {
+      padding: 80px 0;
+      background-color: var(--color-primary);
+      color: var(--color-white);
+    }
+
+    .cta-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .cta-title {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .cta-subtitle {
+      font-size: 1.1rem;
+      margin-bottom: 40px;
+      max-width: 600px;
+    }
+
+    .footer {
+      padding: 60px 0 30px;
+      background-color: var(--color-text-dark);
+      color: var(--color-white);
+    }
+
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+    }
+
+    .footer-column h3 {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-link {
+      color: var(--color-gray-300);
+      transition: color 0.3s ease;
+    }
+
+    .footer-link:hover {
+      color: var(--color-white);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-link {
+      width: 36px;
+      height: 36px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s ease;
+    }
+
+    .social-link:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .footer-bottom {
+      margin-top: 60px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .copyright {
+      color: var(--color-gray-300);
+      font-size: 0.9rem;
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 20px;
+      font-size: 0.9rem;
+    }
+
+    /* Auth Pages Styles */
+    .auth-page {
+      min-height: calc(100vh - 76px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 0;
+      background-color: var(--color-bg-light);
+    }
+
+    .auth-container {
+      width: 100%;
+      max-width: 420px;
+      padding: 40px;
+      background-color: var(--color-white);
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .auth-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .auth-title {
+      font-size: 1.8rem;
+      color: var(--color-text-dark);
+      margin-bottom: 10px;
+    }
+
+    .auth-subtitle {
+      font-size: 1rem;
+      color: var(--color-text-primary);
+    }
+
+    .auth-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-label {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--color-text-dark);
+    }
+
+    .form-input {
+      padding: 12px 16px;
+      border: 1px solid var(--color-gray-300);
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--color-primary);
+    }
+
+    .form-options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+    }
+
+    .remember-me {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .forgot-password {
+      color: var(--color-primary);
+      transition: color 0.3s ease;
+    }
+
+    .forgot-password:hover {
+      text-decoration: underline;
+    }
+
+    .submit-button {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      border: none;
+      padding: 14px;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .submit-button:hover {
+      background-color: var(--color-accent);
+    }
+
+    .auth-divider {
+      display: flex;
+      align-items: center;
+      margin: 20px 0;
+      color: var(--color-text-primary);
+    }
+
+    .auth-divider::before,
+    .auth-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background-color: var(--color-gray-300);
+    }
+
+    .auth-divider span {
+      padding: 0 15px;
+      font-size: 0.9rem;
+    }
+
+    .social-auth {
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-auth-button {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px;
+      border: 1px solid var(--color-gray-300);
+      border-radius: 6px;
+      background-color: var(--color-white);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--color-text-primary);
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .social-auth-button:hover {
+      background-color: var(--color-gray-100);
+    }
+
+    .auth-footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 0.9rem;
+      color: var(--color-text-primary);
+    }
+
+    .auth-link {
+      color: var(--color-primary);
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .auth-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 1024px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar-menu, 
+      .navbar-actions .btn-outline {
+        display: none;
+      }
+      
+      .mobile-menu-toggle {
+        display: block;
+      }
+      
+      .hero-container {
+        flex-direction: column;
+      }
+      
+      .hero-content, 
+      .hero-image {
+        text-align: center;
+      }
+      
+      .hero-actions {
+        justify-content: center;
+      }
+      
+      .hero-stats {
+        justify-content: center;
+      }
+      
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-bottom {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+      }
+    }
+
+    /* Current page indicator utility */
+    .page-landing .navbar-link[href="index.html"],
+    .page-login .navbar-link[href="login.html"],
+    .page-register .navbar-link[href="register.html"],
+    .page-reset-password .navbar-link[href="reset-password.html"] {
+      color: var(--color-primary);
+      position: relative;
+    }
+
+    .page-landing .navbar-link[href="index.html"]::after,
+    .page-login .navbar-link[href="login.html"]::after,
+    .page-register .navbar-link[href="register.html"]::after,
+    .page-reset-password .navbar-link[href="reset-password.html"]::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      height: 2px;
+      width: 100%;
+      background-color: var(--color-primary);
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="page-landing">
+  <!-- Common Navbar -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">N</div>
+        NuraCare
+      </a>
+      <ul class="navbar-menu">
+        <li><a href="index.html" class="navbar-link active">Home</a></li>
+        <li><a href="#features" class="navbar-link">Features</a></li>
+        <li><a href="#how-it-works" class="navbar-link">How it Works</a></li>
+        <li><a href="#testimonials" class="navbar-link">Testimonials</a></li>
+        <li><a href="#pricing" class="navbar-link">Pricing</a></li>
+        <li><a href="#contact" class="navbar-link">Contact</a></li>
+      </ul>
+      <div class="navbar-actions">
+        <a href="login.html" class="btn btn-outline">Login</a>
+        <a href="register.html" class="btn btn-primary">Get Started</a>
+        <button class="mobile-menu-toggle">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-container">
+      <div class="hero-content">
+        <h1 class="hero-title">Healthcare at your fingertips with NuraCare</h1>
+        <p class="hero-subtitle">Modern telehealth platform connecting patients and healthcare providers for seamless virtual consultations.</p>
+        <div class="hero-actions">
+          <a href="register.html" class="btn btn-primary">Start a Free Trial</a>
+          <a href="#how-it-works" class="btn btn-outline">How it Works</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">30k+</span>
+            <span class="stat-label">Active Users</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">2k+</span>
+            <span class="stat-label">Healthcare Providers</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">98%</span>
+            <span class="stat-label">Satisfaction Rate</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="/api/placeholder/550/400" alt="Healthcare Dashboard Preview">
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="features">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Comprehensive Healthcare Features</h2>
+        <p class="section-subtitle">Explore the tools and services designed to streamline your healthcare experience.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-video"></i>
+          </div>
+          <h3 class="feature-title">Virtual Consultations</h3>
+          <p class="feature-description">Connect with healthcare providers through secure video calls from the comfort of your home.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-calendar-check"></i>
+          </div>
+          <h3 class="feature-title">Easy Scheduling</h3>
+          <p class="feature-description">Book appointments with just a few clicks and receive instant confirmations.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-file-medical"></i>
+          </div>
+          <h3 class="feature-title">Electronic Health Records</h3>
+          <p class="feature-description">Access your medical history, test results, and prescriptions in one secure place.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-pills"></i>
+          </div>
+          <h3 class="feature-title">Prescription Management</h3>
+          <p class="feature-description">Request refills and get medications delivered to your doorstep.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-bell"></i>
+          </div>
+          <h3 class="feature-title">Medication Reminders</h3>
+          <p class="feature-description">Never miss a dose with customizable medication alerts and reminders.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-credit-card"></i>
+          </div>
+          <h3 class="feature-title">Simplified Billing</h3>
+          <p class="feature-description">Pay securely online and easily track all your healthcare expenses.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="testimonials">
+    <div class="container testimonials-container">
+      <div class="section-header">
+        <h2 class="section-title">What Our Users Say</h2>
+        <p class="section-subtitle">Real stories from patients and healthcare providers who use NuraCare.</p>
+      </div>
+      <div class="testimonial-cards">
+        <div class="testimonial-card">
+          <div class="testimonial-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-content">"NuraCare has transformed how I manage my chronic condition. I can connect with my doctor whenever I need to without the hassle of traveling to the clinic."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <img src="/api/placeholder/50/50" alt="Sarah Johnson">
+            </div>
+            <div class="author-info">
+              <h4>Sarah Johnson</h4>
+              <p>Patient</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-content">"As a physician, NuraCare helps me provide care to more patients while maintaining high-quality consultations. The platform is intuitive and reliable."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <img src="/api/placeholder/50/50" alt="Dr. Michael Chen">
+            </div>
+            <div class="author-info">
+              <h4>Dr. Michael Chen</h4>
+              <p>Cardiologist</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <p class="testimonial-content">"The medication reminder feature has been a game-changer for my elderly mother. She's never missed a dose since we started using NuraCare."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <img src="/api/placeholder/50/50" alt="Robert Taylor">
+            </div>
+            <div class="author-info">
+              <h4>Robert Taylor</h4>
+              <p>Family Caregiver</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta">
+    <div class="container cta-container">
+      <h2 class="cta-title">Start your healthcare journey today</h2>
+      <p class="cta-subtitle">Join thousands of patients and healthcare providers already using NuraCare for better healthcare management.</p>
+      <a href="register.html" class="btn btn-white">Get Started for Free</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-column">
+          <a href="index.html" class="logo">
+            <div class="logo-icon">N</div>
+            NuraCare
+          </a>
+          <p style="margin-top: 20px; color: var(--color-gray-300);">
+            Modern telehealth platform connecting patients and providers for seamless virtual healthcare.
+          </p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-column">
+        <h3>Product</h3>
+        <div class="footer-links">
+          <a href="#features" class="footer-link">Features</a>
+          <a href="#pricing" class="footer-link">Pricing</a>
+          <a href="#" class="footer-link">For Patients</a>
+          <a href="#" class="footer-link">For Providers</a>
+          <a href="#" class="footer-link">Integrations</a>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h3>Company</h3>
+        <div class="footer-links">
+          <a href="#" class="footer-link">About Us</a>
+          <a href="#" class="footer-link">Careers</a>
+          <a href="#" class="footer-link">Blog</a>
+          <a href="#contact" class="footer-link">Contact</a>
+          <a href="#" class="footer-link">Press</a>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h3>Support</h3>
+        <div class="footer-links">
+          <a href="#" class="footer-link">Help Center</a>
+          <a href="#" class="footer-link">Privacy Policy</a>
+          <a href="#" class="footer-link">Terms of Service</a>
+          <a href="#" class="footer-link">HIPAA Compliance</a>
+          <a href="#" class="footer-link">FAQ</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="copyright">© 2025 NuraCare, Inc. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#" class="footer-link">Privacy</a>
+        <a href="#" class="footer-link">Terms</a>
+        <a href="#" class="footer-link">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+    // Simple scroll behavior for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if(targetId === '#') return;
+        
+        document.querySelector(targetId).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+    
+    // Mobile menu toggle functionality could be added here
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    // Functionality would be implemented here
+  </script>
 </body>
 </html>
