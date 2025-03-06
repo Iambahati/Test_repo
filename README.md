@@ -28,11 +28,9 @@ cd mental-health-platform
 
 2. **Using Django Management Commands**
 ```bash
-# Set up environment and initialize project
+# Set up environment, initialize project and install dependencies
 python src/manage.py setup
 
-# Install dependencies and prepare database
-pip install -r requirements.txt               # Install project dependencies
 python src/manage.py migrate                  # Apply database migrations
 
 # Start the development server
@@ -52,19 +50,8 @@ python src/manage.py docker_build --env=prod  # Build production Docker images
 python src/manage.py docker_up --env=prod     # Start production Docker containers
 ```
 
-3. **Create a New Project**
-```bash
-# Create a new Django project with the recommended structure
-python -m django-admin startproject mental_health_platform
-cd mental_health_platform
-python src/manage.py project new_project
-
-# Follow the instructions to get started with your new project
-```
-
-4. **Access the Application**
+3. **Access the Application**
 - Backend API: http://localhost:8000
-- Frontend: http://localhost:3000
 - Admin Interface: http://localhost:8000/admin
 
 ## 🏗 Project Structure
@@ -159,7 +146,6 @@ python src/manage.py migrate
 
 - End-to-end encryption for all communications
 - Comprehensive access logging
-- Automated threat detection
 
 ## 🤝 Contributing
 
