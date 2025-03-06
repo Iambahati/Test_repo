@@ -26,25 +26,43 @@ git clone https://github.com/hakkenlab/mental-health-platform.git
 cd mental-health-platform
 ```
 
-2. **Using Make Commands**
+2. **Using Django Management Commands**
 ```bash
-# Local development
+# Set up environment and initialize project
+python src/manage.py setup
 
-make env-setup          # Setup .env file with secret key
-make init               # Init db
-make install            # Install project dependencies
-make migrations         # Run database migrations
-make migrate            # Run database migrations
-make run                # Start development server
+# Install dependencies and prepare database
+pip install -r requirements.txt               # Install project dependencies
+python src/manage.py migrate                  # Apply database migrations
 
-# Production deployment
-make ENV=prod install
-make ENV=prod docker-build
-make ENV=prod docker-up
-make ENV=prod env-setup
+# Start the development server
+python src/manage.py runserver 0.0.0.0:8000   # Start development server
+
+# Create a new app
+python src/manage.py create_app myapp         # Create a new Django app in src/apps/
+
+# Docker commands
+python src/manage.py docker_build             # Build Docker images
+python src/manage.py docker_up                # Start Docker containers
+python src/manage.py docker_down              # Stop Docker containers
+
+# Production mode
+python src/manage.py env_setup --env=prod     # Setup production environment
+python src/manage.py docker_build --env=prod  # Build production Docker images
+python src/manage.py docker_up --env=prod     # Start production Docker containers
 ```
 
-3. **Access the Application**
+3. **Create a New Project**
+```bash
+# Create a new Django project with the recommended structure
+python -m django-admin startproject mental_health_platform
+cd mental_health_platform
+python src/manage.py project new_project
+
+# Follow the instructions to get started with your new project
+```
+
+4. **Access the Application**
 - Backend API: http://localhost:8000
 - Frontend: http://localhost:3000
 - Admin Interface: http://localhost:8000/admin
@@ -55,12 +73,14 @@ make ENV=prod env-setup
 mental-health-platform/
 ├── src/                    # Django backend
 │   ├── core/               # Project configuration
+│   │   ├── settings/       # Settings modules (base, local, prod)
+│   │   ├── management/     # Custom management commands
 │   ├── apps/               # Django applications
 │   │   ├── chat/           # AI chat functionality
 │   │   ├── users/          # User management
-│   │   ├── db/             # User management
 │   │   └── others/         # Additional modules
-│   └── templates/          # HTML templates
+│   ├── db/                 # Database files for development
+│   ├── templates/          # HTML templates
 │   │   ├── base/
 │   │   │   ├── base.html   # Base template
 │   │   │   ├── navbar.html # Navbar template
@@ -71,25 +91,36 @@ mental-health-platform/
 │   │   │   │   ├── signin.html # Signin page
 │   │   │   ├── index.html    # Home page
 │   ├── static/             # CSS, JS, images
+│   ├── media/              # User-uploaded content
+│   ├── manage.py           # Django management script
 ├── data/                   # Jupyter notebooks and ML development
-├── docker/                 # Deployment infra
-├── manage.py               # Django management script
+├── docker/                 # Deployment infrastructure
+├── docker-compose.yml      # Development Docker configuration
+├── docker-compose.prod.yml # Production Docker configuration
+├── Dockerfile              # Docker image definition
 ├── requirements.txt        # Project packages
+├── .env.example            # Example environment variables
 └── README.md  
 ```
 
 ### Running Tests
 
 ```bash
-make test               # Run all tests
-make test-coverage     # Run tests with coverage report
+python src/manage.py test       # Run all tests
 ```
 
-### Code Quality
+### Project Maintenance
 
 ```bash
-make lint              # Run linters
-make format           # Format code
+python src/manage.py clean      # Clean up Python compiled files
+```
+
+### Database Tasks
+
+```bash
+python src/manage.py createsuperuser    # Create an admin user
+python src/manage.py dbshell            # Open database shell
+python src/manage.py shell              # Open Django shell
 ```
 
 ## 🚀 Deployment
@@ -98,8 +129,8 @@ make format           # Format code
 
 ```bash
 # Production deployment
-make ENV=prod docker-build
-make ENV=prod docker-up
+python src/manage.py docker_build --env=prod
+python src/manage.py docker_up --env=prod
 
 # Monitor logs
 docker-compose -f docker-compose.prod.yml logs -f
@@ -114,9 +145,14 @@ docker-compose -f docker-compose.prod.yml logs -f
 5. Configure web server (Nginx/Apache/Gunicorn)
 
 ```bash
-make ENV=prod install
-make ENV=prod collectstatic
-make ENV=prod migrate
+# Install dependencies
+pip install -r requirements.txt
+
+# Prepare static files
+python src/manage.py collectstatic --noinput
+
+# Apply migrations
+python src/manage.py migrate
 ```
 
 ## 🔒 Security Features
