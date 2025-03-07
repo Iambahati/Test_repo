@@ -2,142 +2,78 @@
 {% load static %}
 
 {% block content %}
- <!-- Testimonials Section -->
-	  <section id="testimonials" class="testimonials">
-		<div class="container testimonials-container">
-		  <div class="section-header">
-			<h2 class="section-title">What Our Users Say</h2>
-			<p class="section-subtitle">Real stories from patients and healthcare providers who use NuraCare.</p>
-		  </div>
-		  <div class="testimonial-cards">
-			<div class="testimonial-card">
-			  <div class="testimonial-rating">
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star"></i>
-			  </div>
-			  <p class="testimonial-content">"NuraCare has transformed how I manage my chronic condition. I can connect with my doctor whenever I need to without the hassle of traveling to the clinic."</p>
-			  <div class="testimonial-author">
-				<div class="author-avatar">
-				  <img src="/api/placeholder/50/50" alt="Sarah Johnson">
-				</div>
-				<div class="author-info">
-				  <h4>Sarah Johnson</h4>
-				  <p>Patient</p>
-				</div>
-			  </div>
-			</div>
-			<div class="testimonial-card">
-			  <div class="testimonial-rating">
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star"></i>
-			  </div>
-			  <p class="testimonial-content">"As a physician, NuraCare helps me provide care to more patients while maintaining high-quality consultations. The platform is intuitive and reliable."</p>
-			  <div class="testimonial-author">
-				<div class="author-avatar">
-				  <img src="/api/placeholder/50/50" alt="Dr. Michael Chen">
-				</div>
-				<div class="author-info">
-				  <h4>Dr. Michael Chen</h4>
-				  <p>Cardiologist</p>
-				</div>
-			  </div>
-			</div>
-			<div class="testimonial-card">
-			  <div class="testimonial-rating">
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star-half-alt"></i>
-			  </div>
-			  <p class="testimonial-content">"The medication reminder feature has been a game-changer for my elderly mother. She's never missed a dose since we started using NuraCare."</p>
-			  <div class="testimonial-author">
-				<div class="author-avatar">
-				  <img src="/api/placeholder/50/50" alt="Robert Taylor">
-				</div>
-				<div class="author-info">
-				  <h4>Robert Taylor</h4>
-				  <p>Family Caregiver</p>
-				</div>
-			  </div>
-			</div>
-		  </div>
-		</div>
-	  </section>
-    
+<section id="testimonials" class="testimonials">
+  <div class="testimonials-container">
+    <div class="section-header">
+      <span class="section-tag">Testimonials</span>
+      <h2 class="section-title">What Our Users Say</h2>
+      <p class="section-subtitle">Real stories from patients and healthcare providers who use NuraCare.</p>
+    </div>
+
+    <div class="testimonial-cards">
+      <!-- Testimonial 1 -->
+      <div class="testimonial-card">
+        <div class="testimonial-quote-icon">
+          <i class="fas fa-quote-left"></i>
+        </div>
+        <p class="testimonial-content">"NuraCare has transformed how I manage my chronic condition. I can connect with my doctor whenever I need to without the hassle of traveling to the clinic."</p>
+        <div class="testimonial-rating">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <div class="testimonial-author">
+          <div class="author-avatar">
+            <img src="{% static 'imgs/users/sarah_johnson.jpg' %}" alt="Sarah Johnson">
+          </div>
+          <div class="author-info">
+            <h4>Sarah Johnson</h4>
+            <p>Patient</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 2 -->
+      <div class="testimonial-card">
+        <div class="testimonial-quote-icon">
+          <i class="fas fa-quote-left"></i>
+        </div>
+        <p class="testimonial-content">"As a physician, NuraCare helps me provide care to more patients while maintaining high-quality consultations. The platform is intuitive and reliable."</p>
+        <div class="testimonial-rating">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <div class="testimonial-author">
+          <div class="author-avatar">
+            <img src="{% static 'imgs/users/michael_chen.jpg' %}" alt="Dr. Michael Chen">
+          </div>
+          <div class="author-info">
+            <h4>Dr. Michael Chen</h4>
+            <p>Cardiologist</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 3 -->
+      <div class="testimonial-card">
+        <div class="testimonial-quote-icon">
+          <i class="fas fa-quote-left"></i>
+        </div>
+        <p class="testimonial-content">"The medication reminder feature has been a game-changer for my elderly mother. She's never missed a dose since we started using NuraCare."</p>
+        <div class="testimonial-rating">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+        </div>
+        <div class="testimonial-author">
+          <div class="author-avatar">
+            <img src="{% static 'imgs/users/robert_taylor.jpg' %}" alt="Robert Taylor">
+          </div>
+          <div class="author-info">
+            <h4>Robert Taylor</h4>
+            <p>Family Caregiver</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 {% endblock content %}
- <!-- Testimonials Section -->
-	  <section id="testimonials" class="testimonials">
-		<div class="container testimonials-container">
-		  <div class="section-header">
-			<h2 class="section-title">What Our Users Say</h2>
-			<p class="section-subtitle">Real stories from patients and healthcare providers who use NuraCare.</p>
-		  </div>
-		  <div class="testimonial-cards">
-			<div class="testimonial-card">
-			  <div class="testimonial-rating">
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star"></i>
-			  </div>
-			  <p class="testimonial-content">"NuraCare has transformed how I manage my chronic condition. I can connect with my doctor whenever I need to without the hassle of traveling to the clinic."</p>
-			  <div class="testimonial-author">
-				<div class="author-avatar">
-				  <img src="/api/placeholder/50/50" alt="Sarah Johnson">
-				</div>
-				<div class="author-info">
-				  <h4>Sarah Johnson</h4>
-				  <p>Patient</p>
-				</div>
-			  </div>
-			</div>
-			<div class="testimonial-card">
-			  <div class="testimonial-rating">
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star"></i>
-			  </div>
-			  <p class="testimonial-content">"As a physician, NuraCare helps me provide care to more patients while maintaining high-quality consultations. The platform is intuitive and reliable."</p>
-			  <div class="testimonial-author">
-				<div class="author-avatar">
-				  <img src="/api/placeholder/50/50" alt="Dr. Michael Chen">
-				</div>
-				<div class="author-info">
-				  <h4>Dr. Michael Chen</h4>
-				  <p>Cardiologist</p>
-				</div>
-			  </div>
-			</div>
-			<div class="testimonial-card">
-			  <div class="testimonial-rating">
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star"></i>
-				<i class="fas fa-star-half-alt"></i>
-			  </div>
-			  <p class="testimonial-content">"The medication reminder feature has been a game-changer for my elderly mother. She's never missed a dose since we started using NuraCare."</p>
-			  <div class="testimonial-author">
-				<div class="author-avatar">
-				  <img src="/api/placeholder/50/50" alt="Robert Taylor">
-				</div>
-				<div class="author-info">
-				  <h4>Robert Taylor</h4>
-				  <p>Family Caregiver</p>
-				</div>
-			  </div>
-			</div>
-		  </div>
-		</div>
-	  </section>
-    
