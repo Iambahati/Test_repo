@@ -1,22 +1,22 @@
 {% load static %}
 
 <nav class="navbar">
-    <div class="container navbar-container">
-      <a href="/" class="logo">
-        <div class="logo-icon">N</div>
-        NuraCare
-      </a>
-      <ul class="navbar-menu">
-        <li><a href="/" class="navbar-link active">Home</a></li>
-        <li><a href="/features" class="navbar-link">Features</a></li>
-        <li><a href="/testimonials" class="navbar-link">Testimonials</a></li>
-        </ul>
-      <div class="navbar-actions">
-        <a href="{% url 'login' %}" class="btn btn-outline">Login</a>
-        <a href="register.html" class="btn btn-primary">Get Started</a>
-        <button class="mobile-menu-toggle">
-          <i class="fas fa-bars"></i>
-        </button>
-      </div>
+  <div class="container navbar-container">
+    <a href="/" class="logo">
+      <div class="logo-icon">N</div>
+      NuraCare
+    </a>
+    <ul class="navbar-menu" id="navbar-menu">
+      <li><a href="/" class="navbar-link active">Home</a></li>
+      <li><a href="/features" class="navbar-link">Features</a></li>
+      <li><a href="/testimonials" class="navbar-link">Testimonials</a></li>
+    </ul>
+    <div class="navbar-actions">
+      <a href="{% url 'login' %}" class="btn btn-outline">Login</a>
+      <a href="register.html" class="btn btn-primary">Get Started</a>
+      <button class="mobile-menu-toggle" id="navbar-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
-  </nav>
+  </div>
+</nav>
