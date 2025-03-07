@@ -1,0 +1,66 @@
+{% extends 'base/accounts_base_form.html' %}  
+
+{% block content %} 
+<a href="/" class="back-to-home">
+    <i class="fas fa-arrow-left"></i>
+    Back to Home
+</a>
+
+<div class="auth-container">
+    <h1>Sign Up</h1>
+    <form id="signup-form" action="{% url 'register' %}" method="POST">
+        {% csrf_token %}
+
+        <!-- Error Message -->
+        <div class="alert alert-danger" id="error-message">
+            <p>Error: Please fix the issues below</p>
+        </div>
+
+        <!-- Full Name -->
+        <div class="form-group">
+            <input type="text" id="fullname" name="fullname" placeholder="Full Name" required>
+            <i class="fas fa-user input-icon"></i>
+            <div class="alert" id="name-error">
+                <small>Name must be at least 2 characters</small>
+            </div>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+            <i class="fas fa-envelope input-icon"></i>
+            <div class="alert" id="email-error">
+                <small>Invalid email format</small>
+            </div>
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+            <input type="password" id="password" name="password" placeholder="Create Password" required>
+            <i class="fas fa-lock input-icon"></i>
+            <div class="alert" id="password-error">
+                <small>Password must be at least 8 characters</small>
+            </div>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="form-group">
+            <input type="password" id="confirm-password" name="confirm_password" placeholder="Confirm Password" required>
+            <i class="fas fa-lock input-icon"></i>
+            <div class="alert" id="confirm-password-error">
+                <small>Passwords do not match</small>
+            </div>
+        </div>
+
+        <!-- Terms & Conditions -->
+        <div class="form-check">
+            <input type="checkbox" id="terms" name="terms" required>
+            <label for="terms">I agree to the <a href="#">Terms & Conditions</a></label>
+        </div>
+
+        <button class="btn" type="submit">Sign Up</button>
+
+        <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+    </form>
+</div>
+{% endblock content %}
