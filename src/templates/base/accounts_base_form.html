@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Signup</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="{% static 'imgs/favicon/favicon.ico' %}" type="image/x-icon" />
+    <style>
+        :root {
+		--color-primary: #2ecc71;
+		--color-secondary: #1a2b3c;
+		--color-accent: #27ae60;
+		--color-brand-orange: #e67e22;
+
+		--color-text-primary: #e0e0e0;
+		--color-text-dark: #f4f4f4;
+		--color-text-light: #a0a0a0;
+
+		--color-bg-dark: #121620;
+		--color-bg-darker: #0d1117;
+		--color-bg-card: #1e2433;
+
+		--color-success: #2ecc71;
+		--color-warning: #f39c12;
+		--color-error: #e74c3c;
+
+		--color-gray-100: #2c3e50;
+		--color-gray-200: #34495e;
+		--color-gray-300: #7f8c8d;
+		}
+
+		/* Reset & Global Styles */
+		* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		font-family: 'Inter', sans-serif;
+		}
+
+		body {
+		background-color: var(--color-bg-dark);
+		color: var(--color-text-primary);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		min-height: 100vh;
+		}
+
+		/* Back to Home */
+		.back-to-home {
+		position: absolute;
+		top: 20px;
+		left: 20px;
+		color: var(--color-text-light);
+		font-size: 0.9rem;
+		text-decoration: none;
+		display: flex;
+		align-items: center;
+		gap: 5px;
+		transition: all 0.3s ease;
+		}
+
+		.back-to-home i {
+		font-size: 1rem;
+		}
+
+		.back-to-home:hover {
+		color: var(--color-primary);
+		transform: translateX(-3px);
+		}
+
+		/* Authentication Form */
+		.auth-container {
+		background: var(--color-bg-card);
+		padding: 2.5rem;
+		border-radius: 12px;
+		width: 100%;
+		max-width: 400px;
+		box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+		border: 1px solid var(--color-gray-100);
+		text-align: center;
+		}
+
+		/* Form Header */
+		.auth-container h1 {
+		color: var(--color-text-dark);
+		font-size: 1.75rem;
+		font-weight: bold;
+		margin-bottom: 1.5rem;
+		}
+
+		/* Form Group */
+		.form-group {
+		position: relative;
+		margin-bottom: 1.5rem;
+		}
+
+		.form-group input {
+		width: 100%;
+		padding: 0.75rem 1rem 0.75rem 2.5rem;
+		border: 1px solid var(--color-gray-100);
+		border-radius: 6px;
+		background-color: var(--color-bg-darker);
+		color: var(--color-text-primary);
+		font-size: 0.95rem;
+		transition: all 0.3s ease;
+		}
+
+		.form-group input:focus {
+		outline: none;
+		border-color: var(--color-primary);
+		box-shadow: 0 0 5px var(--color-primary);
+		}
+
+		.form-group input::placeholder {
+		color: var(--color-text-light);
+		}
+
+		/* Input Icons */
+		.input-icon {
+		position: absolute;
+		left: 0.75rem;
+		top: 50%;
+		transform: translateY(-50%);
+		color: var(--color-text-light);
+		transition: color 0.3s ease;
+		}
+
+		.form-group input:focus + .input-icon {
+		color: var(--color-primary);
+		}
+
+		/* Alert Messages */
+		.alert {
+		color: var(--color-error);
+		font-size: 0.75rem;
+		margin-top: 5px;
+		text-align: left;
+		display: none; /* Hide by default */
+		}
+
+		/* Buttons */
+		.btn {
+		width: 100%;
+		padding: 0.75rem;
+		background: var(--color-primary);
+		color: var(--color-bg-dark);
+		border: none;
+		border-radius: 6px;
+		font-size: 1rem;
+		font-weight: bold;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		margin-top: 1rem;
+		}
+
+		.btn:hover {
+		background: var(--color-accent);
+		transform: translateY(-3px);
+		}
+
+		/* Links */
+		.auth-container p {
+		margin-top: 1rem;
+		font-size: 0.9rem;
+		}
+
+		.auth-container a {
+		color: var(--color-primary);
+		text-decoration: none;
+		transition: color 0.3s ease;
+		}
+
+		.auth-container a:hover {
+		color: var(--color-accent);
+		text-decoration: underline;
+		}
+
+		/* Terms & Conditions */
+		.form-check {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		font-size: 0.9rem;
+		color: var(--color-text-light);
+		margin-bottom: .3rem;
+		}
+
+		.form-check input {
+		width: 16px;
+		height: 16px;
+		}
+
+		.form-check label a {
+		color: var(--color-primary);
+		text-decoration: none;
+		}
+
+		.form-check label a:hover {
+		color: var(--color-accent);
+		text-decoration: underline;
+		}
+
+
+		/* Responsive Tweaks */
+		@media (max-width: 480px) {
+		.auth-container {
+			margin: 1rem;
+			padding: 2rem;
+		}
+
+		.back-to-home {
+			top: 10px;
+			left: 10px;
+		}
+		}
+    </style>
+</head>
+<body>
+    <main>
+        <div class="container">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+</body>
+</html>
