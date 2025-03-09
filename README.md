@@ -22,8 +22,8 @@ A secure, HIPAA-compliant mental health support platform leveraging AI for perso
 
 1. **Clone and Configure**
 ```bash
-git clone https://github.com/hakkenlab/mental-health-platform.git
-cd mental-health-platform
+git clone https://github.com/Iambahati/Test_repo.git
+cd Test_repo
 ```
 
 2. **Using Django Management Commands**
